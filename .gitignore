@@ -25,3 +25,17 @@ doc/api/
 
 .flutter-plugins
 .flutter-plugins-dependencies
+
+# Local compilation configuration
+.idea
+# Customize private plugins
+plugins/osstp-dynamic-theme
+plugins/osstp-local-storage
+plugins/osstp-main-tabbar
+plugins/osstp-network
+plugins/osstp-dialog
+plugins/osstp-badge
+plugins/osstp-textfield
+lib/main.mapper.g.dart
+android/app/build.gradle
+lib/main.dart
