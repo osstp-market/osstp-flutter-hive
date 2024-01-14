@@ -38,4 +38,3 @@ plugins/osstp-badge
 plugins/osstp-textfield
 lib/main.mapper.g.dart
 android/app/build.gradle
-lib/main.dart
