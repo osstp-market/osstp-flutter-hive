@@ -60,6 +60,7 @@ class _MineBodyWidgetState extends State<MineBodyWidget> {
                     widget.itemList[index].title ?? "",
                     style: ThemeTextStyle.firstTitleStyle,
                   )),
+                  widget.itemList[index].child ?? const SizedBox(),
                   const Icon(Icons.arrow_forward_ios, size: 16.0),
                 ],
               ),

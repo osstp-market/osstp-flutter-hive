@@ -1,6 +1,7 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../../../common/widget/debug_tag_widget.dart';
 import '../../../../../common/global/global_variable.dart';
 import '../../../../../generated/l10n.dart';
 import '/common/global/global_constant.dart';
@@ -73,23 +74,21 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
                                 fontWeight: FontWeight.bold),
                           ),
                         ),
-                        GlobalVariable.isDebug
-                            ? const Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(
-                                    Icons.android_rounded,
-                                    color: Colors.white,
-                                    size: 20,
-                                  ),
-                                  Icon(
-                                    Icons.apple_rounded,
-                                    color: Colors.white,
-                                    size: 20,
-                                  ),
-                                ],
-                              )
-                            : const SizedBox(),
+                        DebugTagWidget(child: const Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.android_rounded,
+                              color: Colors.white,
+                              size: 20,
+                            ),
+                            Icon(
+                              Icons.apple_rounded,
+                              color: Colors.white,
+                              size: 20,
+                            ),
+                          ],
+                        ),),
                       ],
                     ),
                   ),

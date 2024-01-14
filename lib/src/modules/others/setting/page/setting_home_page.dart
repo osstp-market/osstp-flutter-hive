@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../../../common/widget/debug_tag_widget.dart';
 import '../../../../../common/config/application_config.dart';
 import '../../../../../common/utils/show_dialog.dart';
 import '../../../../../common/widget/elevated_button_widget.dart';
@@ -53,41 +54,44 @@ class _SettingHomePageState extends State<SettingHomePage> {
                     Container(
                       margin: const EdgeInsets.only(top: 88.0),
                       padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        children: [
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Expanded(
-                                child: ElevatedButtonWidget.normal(
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(top: 10, bottom: 10),
-                                    child: Text(
-                                      S.of(context).setting_reset,
-                                      style: const TextStyle(color: Colors.red),
+                      child: DebugTagWidget(
+                        fontSize: 50,
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Expanded(
+                                  child: ElevatedButtonWidget.normal(
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(top: 10, bottom: 10),
+                                      child: Text(
+                                        S.of(context).setting_reset,
+                                        style: const TextStyle(color: Colors.red),
+                                      ),
                                     ),
+                                    onPressed: () {
+                                      showGetXGeneralDialog(
+                                        content: S.of(context).setting_reset_or_not,
+                                        showCancelButton: true,
+                                        onConfirm: () async {
+                                          bool result = await ApplicationConfig.instance.resetConfig();
+                                          if (result == true) {
+                                            Application.pushReplaceToSplashPage(context);
+                                          }
+                                        },
+                                      );
+                                    },
                                   ),
-                                  onPressed: () {
-                                    showGetXGeneralDialog(
-                                      content: S.of(context).setting_reset_or_not,
-                                      showCancelButton: true,
-                                      onConfirm: () async {
-                                        bool result = await ApplicationConfig.instance.resetConfig();
-                                        if (result == true) {
-                                          Application.pushReplaceToSplashPage(context);
-                                        }
-                                      },
-                                    );
-                                  },
                                 ),
-                              ),
-                            ],
-                          ),
-                          Text(
-                            "⚠️ ${S.of(context).setting_reset_description}",
-                            style: const TextStyle(fontSize: 12, color: Colors.redAccent),
-                          ),
-                        ],
+                              ],
+                            ),
+                            Text(
+                              "⚠️ ${S.of(context).setting_reset_description}",
+                              style: const TextStyle(fontSize: 12, color: Colors.redAccent),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ],
