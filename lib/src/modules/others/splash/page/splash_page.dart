@@ -74,7 +74,7 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
                                 fontWeight: FontWeight.bold),
                           ),
                         ),
-                        DebugTagWidget(child: const Row(
+                        DebugTagWidget(releaseChild: const Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Icon(
