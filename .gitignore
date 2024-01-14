@@ -37,4 +37,4 @@ plugins/osstp-dialog
 plugins/osstp-badge
 plugins/osstp-textfield
 lib/main.mapper.g.dart
-android/app/build.gradle
+#android/app/build.gradle
