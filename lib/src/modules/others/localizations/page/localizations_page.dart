@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+
 import '../../../../../common/config/application_config.dart';
 import '../../../../../common/utils/localizations_utils.dart';
 import '../../../../../common/utils/show_dialog.dart';
+import '../../../../../common/widget/divider_line_widget.dart';
 import '../../../../../common/widget/main_app_bar.dart';
 import '../../../routers/routers_navigator.dart';
-
 import '../../../../../generated/l10n.dart';
 import '../../setting/view/setting_action_item.dart';
 
@@ -58,6 +59,7 @@ class _LocalizationsPageState extends State<LocalizationsPage> {
               );
             },
           ),
+          DividerLineView(),
           SettingActionItem(
             title: "English：",
             selected: true,

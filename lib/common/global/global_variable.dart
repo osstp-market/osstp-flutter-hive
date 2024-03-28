@@ -17,7 +17,16 @@ class GlobalVariable {
 
   /// Use for UI display normal
   static get isDebug {
-    if (flavor == Flavor.dev || flavor == Flavor.sit) {
+    if (flavor == Flavor.dev) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  /// Use for UI display normal
+  static get isProd {
+    if (flavor == Flavor.prod) {
       return true;
     } else {
       return false;

@@ -7,9 +7,18 @@ import '../utils/badge_utils.dart';
 import '/common/global/global_variable.dart';
 import '../widget/loading_widget.dart';
 import '../widget/osstp_getx_dialog.dart';
+import '../../src/modules/others/notification/controller/notification_controller.dart';
 
 class ConfigManager {
-  static initConfig(Flavor? flavor, String? baseUrl) {
+  /*
+  * App init config argument
+  *
+  * flavor: dev sit uat prod
+  * standardService: standard service data
+  * shouldDataMock: use mock data for test
+  * */
+  static initConfig(Flavor? flavor, String? baseUrl,
+      {bool standardService = true, bool shouldDataMock = false}) async {
     GlobalVariable.flavor = flavor;
     switch (flavor) {
       case Flavor.dev:
@@ -26,11 +35,17 @@ class ConfigManager {
         break;
     }
 
+    // Base config
+    // Always initialize Awesome Notifications
+    await NotificationsController.initializeLocalNotifications();
+    await NotificationsController.initializeIsolateReceivePort();
     BadgeUtils.badgeConfig();
-    AuthenticationUtils.instance.initBiometricsEnableConfig();
+    await AuthenticationUtils.instance.initBiometricsEnableConfig();
+
+    // plugins config init
     _dialogDefaultConfig();
     _easyLoadingConfig();
-    _networkConfig();
+    _networkConfig(standardService: standardService,shouldDataMock: shouldDataMock);
   }
 
   /// Init set up Dialog default language
@@ -62,12 +77,13 @@ class ConfigManager {
   }
 
   /// set up network
-  static _networkConfig() {
+  static _networkConfig({bool standardService = true, bool shouldDataMock = false}) {
     OsstpNetworkConfig.instance.config(
       // connectTimeout: ,
-      // shouldDataMock: true,
       defaultOptions: OsstpOptions(
         baseUrl: GlobalVariable.baseUrl,
+        standardService: standardService,
+        shouldDataMock: shouldDataMock, // mock test model
       ),
       loggerLevel: OsstpNetworkLogLevel.headerBody,
     );

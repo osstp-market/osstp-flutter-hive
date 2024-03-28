@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 
 import '../global/global_variable.dart';
 
-class DebugTagWidget extends StatelessWidget {
-  DebugTagWidget({Key? key, this.releaseChild, this.fontSize, this.releaseChildDisplay = true}) : super(key: key);
+class DebugDisplayTagWidget extends StatelessWidget {
+  DebugDisplayTagWidget({Key? key, this.child, this.fontSize}) : super(key: key);
+
   /// NOTE:
   /// child：release display
-  Widget? releaseChild;
-  bool? releaseChildDisplay;
+  Widget? child;
 
   double? fontSize;
   @override
@@ -22,7 +22,7 @@ class DebugTagWidget extends StatelessWidget {
                 child:
                     Text("DEBUG", style: TextStyle(fontSize: (fontSize ?? 15), color: Colors.orange.withOpacity(0.5))))
             : const SizedBox(),
-        releaseChildDisplay == true ? (releaseChild ?? const SizedBox()) : const SizedBox(),
+        GlobalVariable.isDebug ? (child ?? const SizedBox()) : const SizedBox(),
         GlobalVariable.isDebug
             ? Text("DEBUG", style: TextStyle(fontSize: (fontSize ?? 15), color: Colors.orange.withOpacity(0.5)))
             : const SizedBox(),

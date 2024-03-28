@@ -22,7 +22,7 @@ class MainTabBarController extends SuperController {
     TabBarControllers(
       tabBarItem: OsstpMainTabBarItem(label: S.current.tabbar_home, icon: const Icon(Icons.home_rounded)),
       pageWidget: const RefreshPage(),
-      routesName: Routers.homePage,
+      routesName: Routers.refreshPage,
     ),
     TabBarControllers(
       tabBarItem:
@@ -71,6 +71,7 @@ class MainTabBarController extends SuperController {
         break;
       case AppLifecycleState.resumed:
         if (AuthenticationUtils.instance.biometricsEnable.value == true &&
+            Get.rawRoute?.settings.name != null &&
             Get.rawRoute?.settings.name != Routers.biometricPage) {
           Application.push(Get.context!, Routers.biometricPage);
         }

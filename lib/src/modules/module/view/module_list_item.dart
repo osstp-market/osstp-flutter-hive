@@ -65,8 +65,7 @@ class ModuleListItem extends StatelessWidget {
                     },
                     icon: (selected
                         ? const Icon(
-                            Icons.favorite,
-                            color: Colors.redAccent,
+                            Icons.preview_rounded,
                           )
                         : const Icon(
                             Icons.favorite,

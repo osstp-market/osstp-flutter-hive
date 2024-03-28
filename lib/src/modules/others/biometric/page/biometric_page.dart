@@ -25,10 +25,8 @@ class BiometricPage extends StatelessWidget {
               automaticallyImplyLeading: arguments?.isPreview ?? false,
               backgroundColor: ThemeColors.scaffoldThemeColor(context),
               elevation: 0.0),
-          body: WillPopScope(
-            onWillPop: () async {
-              return arguments?.isPreview ?? false;
-            },
+          body: PopScope(
+            canPop: arguments?.isPreview ?? false,
             child: SafeArea(
               child: Obx(() => Column(
                     children: [

@@ -33,7 +33,7 @@ class MineController extends SuperController {
           image: Icons.view_module_rounded,
           routesName: Routers.modulesPage,
           needSpace: true,
-          child: DebugTagWidget(),
+          child: DebugDisplayTagWidget(),
         ),
       );
     }

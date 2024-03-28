@@ -1,8 +1,11 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:osstp_flutter_hive/common/global/global_constant.dart';
+import 'package:osstp_flutter_hive/common/utils/string_utils.dart';
 import 'package:osstp_local_storage/osstp_local_storage.dart';
 
+import '../../../../../common/global/global_variable.dart';
 import '../../../../../common/library/lib_flutter_page_indicator/flutter_page_indicator.dart';
 import '../../../../../common/library/lib_transformer_page_view/parallax.dart';
 import '../../../../../common/library/lib_transformer_page_view/transformer_page_view.dart';
@@ -37,10 +40,8 @@ class _GuidePageState extends State<GuidePage> {
         builder: (controller) {
           return Material(
             child: Scaffold(
-              body: WillPopScope(
-                onWillPop: () async {
-                  return false;
-                },
+              body: PopScope(
+                canPop: false,
                 child: Stack(
                   children: <Widget>[
                     TransformerPageView(
@@ -110,7 +111,7 @@ class _GuidePageState extends State<GuidePage> {
                         offstage: controller.index.value == controller.imagesData.length - 1 ? false : true,
                         child: Container(
                           alignment: Alignment.topRight,
-                          margin: const EdgeInsets.fromLTRB(0.0, 40.0, 10.0, 0.0),
+                          margin: const EdgeInsets.only(top: 30.0),
                           child: ElevatedButton(
                             style: ButtonStyle(
                               elevation: MaterialStateProperty.resolveWith((states) => 0),
@@ -121,7 +122,10 @@ class _GuidePageState extends State<GuidePage> {
                             },
                             child: const Padding(
                               padding: EdgeInsets.symmetric(vertical: 20),
-                              child: Icon(Icons.close_rounded),
+                              child: Icon(
+                                Icons.close_rounded,
+                                color: Colors.white70,
+                              ),
                             ),
                           ),
                         ),
@@ -136,19 +140,22 @@ class _GuidePageState extends State<GuidePage> {
   }
 
   void _newHomePage(BuildContext context) {
-    final args = context.settings?.arguments;
-    if (args != null) {
-      Application.pop(this.context);
+    //
+    NavigatePushArguments? arguments = context.settings?.arguments as NavigatePushArguments?;
+    if (arguments?.isPreview == true) {
+      // module 预览
+      Application.pop(context);
     } else {
-      Application.router?.navigateTo(context, Routers.mainTabBar, replace: true).then((result) {});
+      String routing = "";
+      if (GlobalVariable.isProd == true && itIsNotEmpty(GlobalConstant.router)) {
+        // 打相应的渠道包
+        routing = GlobalConstant.router;
+      } else {
+        routing = Routers.mainTabBar;
+      }
+      Application.router?.navigateTo(context, routing, replace: true);
     }
   }
-  // void _newHomePage() {
-  //   // Get.to(const MainTabBarPage());
-  //   Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (builder) {
-  //     return const MainTabBarPage();
-  //   }), (route) => route == null);
-  // }
 
   @override
   void dispose() {

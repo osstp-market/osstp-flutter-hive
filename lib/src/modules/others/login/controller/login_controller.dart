@@ -50,8 +50,8 @@ class LoginController extends SuperController {
   @override
   void onInit() {
     super.onInit();
-    phoneController.text = "admin";
-    passwordController.text = "123456";
+    // phoneController.text = "admin";
+    // passwordController.text = "123456";
   }
 
   getGetCaptcha() {

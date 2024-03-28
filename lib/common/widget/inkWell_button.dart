@@ -8,7 +8,6 @@ class InkWellButton extends _InkWellBaseButton {
       {Key? key,
       required Widget child,
       AlignmentGeometry? alignment,
-      EdgeInsetsGeometry? padding,
       double? height,
       double? width,
       Color? backgroundColor,
@@ -22,7 +21,6 @@ class InkWellButton extends _InkWellBaseButton {
           key: key,
           child: child,
           alignment: alignment,
-          padding: padding,
           height: height,
           width: width,
           backgroundColor: backgroundColor,
@@ -53,7 +51,6 @@ class InkWellButton extends _InkWellBaseButton {
           key: key,
           child: child,
           alignment: alignment,
-          padding: padding,
           height: height,
           width: width,
           backgroundColor: backgroundColor,
@@ -72,7 +69,6 @@ class _InkWellBaseButton extends StatelessWidget {
       {Key? key,
       required this.child,
       this.alignment,
-      this.padding,
       this.height,
       this.width,
       this.backgroundColor,
@@ -88,7 +84,6 @@ class _InkWellBaseButton extends StatelessWidget {
 
   final Widget child;
   final AlignmentGeometry? alignment;
-  final EdgeInsetsGeometry? padding;
   final double? height;
   final double? width;
   final Color? backgroundColor;
@@ -104,7 +99,6 @@ class _InkWellBaseButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: alignment,
-      padding: padding,
       height: height,
       width: width,
       child: beInkWell

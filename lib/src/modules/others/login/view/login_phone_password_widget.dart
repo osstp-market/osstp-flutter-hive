@@ -17,7 +17,7 @@ class LoginPhonePasswordWidget extends StatelessWidget {
       children: [
         OsstpTextFieldRounded(
           editingBorderColor: Colors.green,
-          idleBorderColor: Colors.black12,
+          idleBorderColor: Colors.blueGrey,
           borderWidth: 1,
           cornerRadius: 5,
           hintText: S.of(context).login_hint_phone,
@@ -36,7 +36,7 @@ class LoginPhonePasswordWidget extends StatelessWidget {
         ),
         OsstpTextFieldRounded(
           editingBorderColor: Colors.green,
-          idleBorderColor: Colors.black12,
+          idleBorderColor: Colors.blueGrey,
           borderWidth: 1,
           cornerRadius: 5,
           hintText: S.of(context).login_hint_password,

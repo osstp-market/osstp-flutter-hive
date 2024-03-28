@@ -32,12 +32,8 @@ class _MainTabBarPageState extends State<MainTabBarPage> with SingleTickerProvid
     return GetBuilder(
       init: MainTabBarController(),
       initState: (state) {},
-      didChangeDependencies: (state) {
-        print('didChangeDependencies--');
-      },
-      didUpdateWidget: (build, state) {
-        print('didUpdateWidget--');
-      },
+      didChangeDependencies: (state) {},
+      didUpdateWidget: (build, state) {},
       builder: (MainTabBarController controller) {
         return Scaffold(
           body: MainIndexedStackView(
@@ -69,17 +65,16 @@ class _MainTabBarPageState extends State<MainTabBarPage> with SingleTickerProvid
               needAuthTabItems: const [0], //[controller.tabItemList.length - 1],
               notAuthedCallback: (index) {
                 showGetXGeneralDialog(
-                    title: "认证",
-                    content: "请注册登录",
-                    contentTextAlign: TextAlign.center,
-                    showCancelButton: true,
-                    confirmTitle: "登录",
-                    onConfirm: () {
-                      setState(() {
-                        _tabController.animateTo(2);
-                      });
-                    },
-
+                  title: "认证",
+                  content: "请注册登录",
+                  contentTextAlign: TextAlign.center,
+                  showCancelButton: true,
+                  confirmTitle: "登录",
+                  onConfirm: () {
+                    setState(() {
+                      _tabController.animateTo(2);
+                    });
+                  },
                 );
               },
             ),

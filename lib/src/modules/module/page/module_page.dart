@@ -1,6 +1,9 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../../../common/widget/inkWell_button.dart';
+import '../../../../common/utils/show_dialog.dart';
+import '../../../../common/widget/loading_widget.dart';
 import '/common/widget/main_app_bar.dart';
 import '/src/modules/module/view/module_list_item.dart';
 import '../../../../generated/l10n.dart';
@@ -19,11 +22,31 @@ class ModulePage extends StatelessWidget {
         return Scaffold(
           appBar: MainAppBar(
             title: '${S.current.tabbar_module}(${controller.itemList.length})',
-            rightActions: [" + "],
-            onTapFunction: (OnTapModel tapModel) {
-              print(tapModel.index);
-              print(tapModel.name);
-            },
+            rightActionWidgets: [
+              InkWellButton.InkWell(
+                  child: const Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: Text("Dialog"),
+                  ),
+                  onTap: () {
+                    showGetXGeneralDialog(
+                        title: "Dialog",
+                        content: "Refresh ?",
+                        showCancelButton: true,
+                        onConfirm: () {
+                          LoadingWidget.show(status: "Loading...");
+                          Future.delayed(const Duration(seconds: 5)).then((value) {
+                            LoadingWidget.showSuccess(status: "Success");
+                            Future.delayed(LoadingWidget.displayDuration).then((value) {
+                              LoadingWidget.showToast(status: "Toast Success");
+                            });
+                          });
+                        });
+                  })
+            ],
+            // onTapFunction: (OnTapModel tapModel) {
+            //
+            // },
           ),
           body: SafeArea(
             child: ListView.builder(

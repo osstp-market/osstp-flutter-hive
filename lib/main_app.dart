@@ -12,6 +12,7 @@ import '/src/modules/routers/routers_observer.dart';
 
 import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 import 'common/config/application_config.dart';
+import 'src/modules/others/notification/controller/notification_controller.dart';
 import 'common/global/global_constant.dart';
 import 'generated/l10n.dart';
 
@@ -26,6 +27,9 @@ class _MainAppState extends State<MainApp> {
   @override
   void initState() {
     super.initState();
+
+    /// Notification listening start
+    NotificationsController.initializeNotificationsEventListeners();
 
     /// init router
     final router = FluroRouter();
@@ -47,8 +51,9 @@ class _MainAppState extends State<MainApp> {
     }
     return OsstpDynamicThemeWidget(
       initialThemeMode: widget.themeMode ?? OsstpDynamicThemeMode.system,
-      light: OsstpDefaultThemeData.lightThemeData,
-      dark: OsstpDefaultThemeData.darkThemeData,
+      light: OsstpThemeData.lightThemeData,
+      dark: OsstpThemeData.darkThemeData,
+      custom: OsstpThemeData.customThemeData,
       builder: (lightTheme, darkTheme, systemThemeModel) => RefreshConfiguration(
         headerBuilder: () =>
             const WaterDropHeader(), // Configure the default header indicator. If you have the same header indicator for each page, you need to set this
@@ -80,6 +85,7 @@ class _MainAppState extends State<MainApp> {
           navigatorObservers: [GlobalRouteObserver()],
           // locale: kDebugMode ? Get.deviceLocale : null,
           supportedLocales: S.delegate.supportedLocales,
+          // onGenerateInitialRoutes: onGenerateInitialRoutes,
           localizationsDelegates: const [
             RefreshLocalizations.delegate,
             GlobalMaterialLocalizations.delegate,
@@ -106,6 +112,16 @@ class _MainAppState extends State<MainApp> {
       ),
     );
   }
+
+  // List<Route<dynamic>> onGenerateInitialRoutes(String initialRouteName) {
+  //   List<Route<dynamic>> pageStack = [];
+  //   pageStack.add(MaterialPageRoute(builder: (_) => const FavorPage()));
+  //   if (initialRouteName == Routers.notification && NotificationController.initialAction != null) {
+  //     pageStack.add(
+  //         MaterialPageRoute(builder: (_) => NotificationPage(receivedAction: NotificationController.initialAction!)));
+  //   }
+  //   return pageStack;
+  // }
 
   void _localLogWriter(String text, {bool isError = false}) {
     // pass the message to your favourite logging package here

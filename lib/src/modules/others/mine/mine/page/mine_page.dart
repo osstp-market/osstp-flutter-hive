@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../../../../common/utils/show_dialog.dart';
 import '/common/global/global_variable.dart';
 import '/common/widget/osstp_getx_dialog.dart';
 import '../../../../../../common/theme/theme.dart';
-import '../../../../../../common/utils/badge_utils.dart';
 import '../../../../../../common/widget/main_app_bar.dart';
 import '../../../../../../generated/l10n.dart';
 import '../../../../routers/routers_config.dart';
@@ -28,25 +28,8 @@ class _MinePageState extends State<MinePage> {
       builder: (controller) {
         return Scaffold(
           appBar: MainAppBar(
-              title: S.of(context).tabbar_mine,
-              rightActionWidgets: [
-                const Icon(
-                  Icons.notifications_off_rounded,
-                ),
-                const Icon(
-                  Icons.notification_add_rounded,
-                )
-              ],
-              onTapFunction: (OnTapModel tapModel) {
-                if (tapModel.index == 0) {
-                  BadgeUtils.clear();
-                }
-                if (tapModel.index == 1) {
-                  BadgeUtils.badgeChangeWidget(index: 0, badge: '5');
-                  BadgeUtils.badgeChangeWidget(index: 1, badge: '105');
-                  BadgeUtils.badgeChangeWidget(index: 2, badge: '55');
-                }
-              }),
+            title: S.of(context).tabbar_mine,
+          ),
           body: Container(
             color: ThemeColors.scaffoldThemeColor(context),
             child: SafeArea(

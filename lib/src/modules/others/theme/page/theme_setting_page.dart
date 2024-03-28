@@ -1,10 +1,14 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:osstp_dynamic_theme/osstp_dynamic_theme.dart';
-import '/common/theme/theme.dart';
-import '/common/widget/main_app_bar.dart';
+import '../../../../../common/widget/elevated_button_widget.dart';
+import '../../../routers/routers_config.dart';
+import '../../../routers/routers_navigator.dart';
+import '../../../../../common/widget/divider_line_widget.dart';
+import '../controller/theme_setting_controller.dart';
+import '../../../../../common/theme/theme.dart';
+import '../../../../../common/widget/main_app_bar.dart';
 import '../../../../../common/utils/show_dialog.dart';
-import '../../../../../common/widget/osstp_getx_dialog.dart';
 import '../../../../../generated/l10n.dart';
 import '../../setting/view/setting_action_item.dart';
 
@@ -17,157 +21,158 @@ class ThemeSettingPage extends StatefulWidget {
 }
 
 class _ThemeSettingPageState extends State<ThemeSettingPage> {
-  OsstpDynamicThemeMode? themeMode;
-
-  bool darkSelect = true;
-  bool followSystem = true;
-
-  @override
-  void initState() {
-    super.initState();
-
-    Future.delayed(const Duration(seconds: 0)).then((onValue) {
-      initPlatformState();
-    });
-  }
-
-  /// 初始化获取当前主题类型
-  Future<void> initPlatformState() async {
-    // 获取主题
-    themeMode = await OsstpDynamicTheme.getThemeMode();
-    if (themeMode == OsstpDynamicThemeMode.system) {
-      followSystem = true;
-    } else {
-      followSystem = false;
-      if (themeMode == OsstpDynamicThemeMode.dark) {
-        darkSelect = true;
-      } else {
-        darkSelect = false;
-      }
-    }
-    setState(() {});
-  }
-
-  /// 设置主题类型
-  setThemeState(OsstpDynamicThemeMode dynamicThemeMode) {
-    themeMode = dynamicThemeMode;
-    setState(() {});
-  }
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: MainAppBar(
-        title: S.of(context).setting_theme,
-        rightActionWidgets: [
-          ElevatedButton(
-            // style: const ButtonStyle(),
-            child: Text(S.of(context).general_save),
-            onPressed: () {
-              showGetXGeneralDialog(
-                content: S.of(context).setting_change_alert,
-                 showCancelButton: true,
-                 onConfirm: () async {
-                   OsstpDynamicThemeWidget.of(context).setThemeMode(dynamicThemeMode: themeMode);
-                 },
-              );
-            },
+    return GetBuilder<ThemeSettingController>(
+      init: ThemeSettingController(),
+      builder: (controller) {
+        return Scaffold(
+          appBar: MainAppBar(
+            title: S.of(context).setting_theme,
+            rightActionWidgets: [
+              ElevatedButton(
+                // style: const ButtonStyle(),
+                child: Text(S.of(context).general_save),
+                onPressed: () {
+                  showGetXGeneralDialog(
+                    content: S.of(context).setting_change_alert,
+                    showCancelButton: true,
+                    onConfirm: () async {
+                      OsstpDynamicThemeWidget.of(context).saveThemeMode(dynamicThemeMode: controller.currentThemeMode);
+                    },
+                  );
+                },
+              ),
+            ],
           ),
-        ],
-      ),
-      body: ListView(
-        children: [
-          Container(
-            color: ThemeColors.listItemBackgroundThemeColor(context),
-            padding: const EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    // 跟随系统
-                    Text(S.of(context).setting_default_system),
-                    Switch(
-                      activeColor:  Colors.green,
-                        value: followSystem,
-                        onChanged: (value) async {
-                          followSystem = !followSystem;
-                          if (followSystem == true) {
-                            // 跟随系统时赋值 否则保持原来状态
-                            setThemeState(OsstpDynamicThemeMode.system);
-                          } else {
-                            // 切换时还原到当前设置的主题状态
-                            if (await OsstpDynamicTheme.getThemeMode() == OsstpDynamicThemeMode.system) {
-                              final brightness = PlatformDispatcher.instance.platformBrightness;
-                              darkSelect = brightness == Brightness.dark ? true : false;
-                              darkSelect
-                                  ? setThemeState(OsstpDynamicThemeMode.dark)
-                                  : setThemeState(OsstpDynamicThemeMode.light);
-                            } else {
-                              if (await OsstpDynamicTheme.getThemeMode() == OsstpDynamicThemeMode.dark) {
-                                darkSelect = true;
-                                setThemeState(OsstpDynamicThemeMode.dark);
-                              } else {
-                                darkSelect = false;
-                                setThemeState(OsstpDynamicThemeMode.light);
-                              }
-                            }
-                          }
-                        })
-                  ],
-                ),
-                Text(
-                  S.of(context).setting_system_description,
-                  style: const TextStyle(fontSize: 12),
-                ),
-              ],
-            ),
-          ),
-          !followSystem
-              ? Column(
+          body: ListView(
+            children: [
+              Container(
+                color: ThemeColors.listItemBackgroundThemeColor(context),
+                padding: const EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 20),
+                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
-                        margin: const EdgeInsets.only(left: 15, top: 15),
-                        child: Text(
-                          S.of(context).setting_handle_select,
-                          style: const TextStyle(fontSize: 12),
-                        )),
-                    Container(
-                      margin: const EdgeInsets.only(top: 5),
-                      child: Column(
-                        children: [
-                          // 普通模式
-                          SettingActionItem(
-                            title: S.of(context).setting_normal_type,
-                            selected: !darkSelect,
-                            voidCallback: () {
-                              if (darkSelect == true) {
-                                darkSelect = !darkSelect;
-                                setThemeState(OsstpDynamicThemeMode.light);
-                              }
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        // 跟随系统
+                        Text(S.of(context).setting_default_system),
+                        Obx(
+                          () => Switch(
+                            activeColor: Colors.green,
+                            value: controller.followSystem.value,
+                            onChanged: (value) async {
+                              controller.changeThemeType();
                             },
                           ),
-                          // 暗黑模式
-                          SettingActionItem(
-                            title: S.of(context).setting_dark_type,
-                            selected: darkSelect,
-                            voidCallback: () {
-                              if (darkSelect == false) {
-                                darkSelect = !darkSelect;
-                                setThemeState(OsstpDynamicThemeMode.dark);
-                              }
-                            },
-                          ),
-                        ],
-                      ),
+                        )
+                      ],
+                    ),
+                    Text(
+                      S.of(context).setting_system_description,
+                      style: const TextStyle(fontSize: 12),
                     ),
                   ],
-                )
-              : const SizedBox()
-        ],
-      ),
+                ),
+              ),
+              !controller.followSystem.value
+                  ? Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.only(left: 15, top: 15),
+                          child: Text(
+                            S.of(context).setting_handle_select,
+                            style: const TextStyle(fontSize: 12),
+                          ),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(top: 5),
+                          child: Obx(() => Column(
+                                children: [
+                                  // 普通模式
+                                  SettingActionItem(
+                                    title: S.of(context).setting_normal_type,
+                                    selected: controller.themeMode.value == OsstpDynamicThemeMode.light,
+                                    voidCallback: () {
+                                      controller.setThemeState(OsstpDynamicThemeMode.light);
+                                    },
+                                  ),
+                                  DividerLineView(),
+                                  // 暗黑模式
+                                  SettingActionItem(
+                                    title: S.of(context).setting_dark_type,
+                                    selected: controller.themeMode.value == OsstpDynamicThemeMode.dark,
+                                    voidCallback: () {
+                                      controller.setThemeState(OsstpDynamicThemeMode.dark);
+                                    },
+                                  ),
+                                  DividerLineView(),
+                                  SettingActionItem(
+                                    title: S.of(context).setting_custom_theme,
+                                    selected: controller.themeMode.value == OsstpDynamicThemeMode.custom,
+                                    voidCallback: () async {
+                                      Application.push(context, Routers.colorPickerPagePage,
+                                              routeSettings:
+                                                  RouteSettings(arguments: OsstpThemeData.customThemeColorModel))
+                                          ?.then((value) async {
+                                        if (value != null) {
+                                          ThemeColorModel result = value;
+                                          bool saved = await OsstpThemeData.saveCustomThemeData(
+                                            themeColorModel: ThemeColorModel(
+                                              brightness: result.brightness,
+                                              primaryColor: result.primaryColor,
+                                              appBarAndBottomBarThemeColor: result.appBarAndBottomBarThemeColor,
+                                              scaffoldBackgroundColor: result.scaffoldBackgroundColor,
+                                              selectedIconThemeColor: result.selectedIconThemeColor,
+                                              unselectedIconThemeColor: result.unselectedIconThemeColor,
+                                              selectedItemColor: result.selectedItemColor,
+                                              unselectedItemColor: result.unselectedItemColor,
+                                              primaryColorLightColor: result.primaryColorLightColor,
+                                              dividerColor: result.dividerColor,
+                                              iconThemeColor: result.iconThemeColor,
+                                              elevatedButtonThemeColor: result.elevatedButtonThemeColor,
+                                            ),
+                                          );
+                                          if (saved == true) {
+                                            OsstpDynamicThemeWidget.of(context)
+                                                .saveThemeMode(dynamicThemeMode: OsstpDynamicThemeMode.custom);
+                                            OsstpDynamicThemeWidget.of(context)
+                                                .setTheme(customTheme: OsstpThemeData.customThemeData);
+                                            controller.setThemeState(OsstpDynamicThemeMode.custom);
+                                          }
+                                        }
+                                      });
+                                    },
+                                  ),
+                                  if (controller.themeMode.value == OsstpDynamicThemeMode.custom)
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Row(
+                                        children: [
+                                          Expanded(
+                                            child: ElevatedButtonWidget.normal(
+                                              titleText: const Text("Random Theme"),
+                                              onPressed: () {
+                                                OsstpDynamicThemeWidget.of(context).saveThemeMode();
+                                                controller.currentThemeMode = OsstpThemeData.themeMode!;
+                                              },
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                ],
+                              )),
+                        ),
+                      ],
+                    )
+                  : const SizedBox(),
+            ],
+          ),
+        );
+      },
     );
   }
 }

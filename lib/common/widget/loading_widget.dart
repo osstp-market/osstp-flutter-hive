@@ -5,7 +5,7 @@ class LoadingWidget {
   static dismiss({
     bool animation = true,
   }) {
-    EasyLoading.dismiss(
+    return EasyLoading.dismiss(
       animation: animation,
     );
   }
@@ -16,7 +16,7 @@ class LoadingWidget {
     EasyLoadingMaskType? maskType,
     bool? dismissOnTap,
   }) {
-    EasyLoading.show(
+    return EasyLoading.show(
       status: status,
       indicator: indicator,
       maskType: maskType,
@@ -31,7 +31,7 @@ class LoadingWidget {
     EasyLoadingMaskType? maskType,
     bool? dismissOnTap,
   }) {
-    EasyLoading.showToast(
+    return EasyLoading.showToast(
       status ?? "",
       duration: duration,
       toastPosition: toastPosition,
@@ -46,7 +46,7 @@ class LoadingWidget {
     EasyLoadingMaskType? maskType,
     bool? dismissOnTap,
   }) {
-    EasyLoading.showSuccess(
+    return EasyLoading.showSuccess(
       status ?? "",
       duration: duration,
       maskType: maskType,
@@ -60,7 +60,7 @@ class LoadingWidget {
     EasyLoadingMaskType? maskType,
     bool? dismissOnTap,
   }) {
-    EasyLoading.showError(
+    return EasyLoading.showError(
       status ?? "",
       duration: duration,
       maskType: maskType,
@@ -74,7 +74,7 @@ class LoadingWidget {
     EasyLoadingMaskType? maskType,
     bool? dismissOnTap,
   }) {
-    EasyLoading.showInfo(
+    return EasyLoading.showInfo(
       status ?? "",
       duration: duration,
       maskType: maskType,
@@ -86,10 +86,14 @@ class LoadingWidget {
     double value, {
     EasyLoadingMaskType? maskType,
   }) {
-    EasyLoading.showProgress(
+    return EasyLoading.showProgress(
       value,
       maskType: maskType,
     );
+  }
+
+  static get displayDuration {
+    return EasyLoading.instance.displayDuration;
   }
 }
 
