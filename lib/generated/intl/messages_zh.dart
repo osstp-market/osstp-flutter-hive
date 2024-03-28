@@ -41,6 +41,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "general_pull_up_load": MessageLookupByLibrary.simpleMessage("上拉加载"),
         "general_register": MessageLookupByLibrary.simpleMessage("注册"),
         "general_save": MessageLookupByLibrary.simpleMessage("保存"),
+        "general_service_data_abnormal":
+            MessageLookupByLibrary.simpleMessage("服务端数据异常"),
         "general_submit": MessageLookupByLibrary.simpleMessage("提交"),
         "home_banner": MessageLookupByLibrary.simpleMessage("滚动横幅"),
         "home_edit_preview": MessageLookupByLibrary.simpleMessage("预览"),
@@ -75,21 +77,33 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("HIVE简介"),
         "setting_about_introduced": MessageLookupByLibrary.simpleMessage(
             "一款跨平台的产品级架构APP，基础功能组件高度封装、低耦合，可以根据产品需求，快速集成、发布高质量产品。"),
+        "setting_available_biometrics":
+            MessageLookupByLibrary.simpleMessage("生物识别是否可用："),
+        "setting_biometrics_open":
+            MessageLookupByLibrary.simpleMessage("是否开启生物识别："),
+        "setting_biometrics_support":
+            MessageLookupByLibrary.simpleMessage("是否支持生物识别："),
+        "setting_biometrics_unavailable":
+            MessageLookupByLibrary.simpleMessage("不可用："),
         "setting_change_alert":
             MessageLookupByLibrary.simpleMessage("保存当前的操作吗？"),
         "setting_current_language":
             MessageLookupByLibrary.simpleMessage("当前语言"),
+        "setting_custom_theme": MessageLookupByLibrary.simpleMessage("自定义主题"),
         "setting_dark_type": MessageLookupByLibrary.simpleMessage("暗黑模式"),
         "setting_default_system": MessageLookupByLibrary.simpleMessage("跟随系统"),
         "setting_handle_select": MessageLookupByLibrary.simpleMessage("手动选择"),
         "setting_language": MessageLookupByLibrary.simpleMessage("语言"),
         "setting_modules": MessageLookupByLibrary.simpleMessage("组件"),
         "setting_normal_type": MessageLookupByLibrary.simpleMessage("普通模式"),
+        "setting_not_support": MessageLookupByLibrary.simpleMessage("不支持"),
         "setting_reset": MessageLookupByLibrary.simpleMessage("重置"),
         "setting_reset_description":
             MessageLookupByLibrary.simpleMessage("注意：重置后（初始化本地所有配置），预览默认配置"),
         "setting_reset_or_not": MessageLookupByLibrary.simpleMessage("是否重置？"),
         "setting_setting": MessageLookupByLibrary.simpleMessage("设置"),
+        "setting_setting_success": MessageLookupByLibrary.simpleMessage("设置成功"),
+        "setting_support": MessageLookupByLibrary.simpleMessage("支持"),
         "setting_system_description":
             MessageLookupByLibrary.simpleMessage("开启后，将跟随系统打开或关闭深色模式"),
         "setting_theme": MessageLookupByLibrary.simpleMessage("暗黑模式"),

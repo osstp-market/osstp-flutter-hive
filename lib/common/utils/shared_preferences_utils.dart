@@ -14,4 +14,6 @@ class LocalStoreKey {
   /// 介绍画面已经显示过
   static const String guideHasDisplay = "guide_has_display_key";
   static const String biometricsEnable = "biometrics_enable_key";
+  /// 省份名称
+  static const String province = "province_key";
 }

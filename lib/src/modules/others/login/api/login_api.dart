@@ -11,6 +11,7 @@ class LoginApi extends OsstpRequest<AuthModel> {
   OsstpOptions? get option => OsstpOptions(
         method: RequestMethod.post.method,
         useDefaultParameter: false,
+        // standardService: false,
         // shouldDataMock: true,
       );
 
@@ -32,6 +33,7 @@ class UserInfoApi extends OsstpRequest<UserInfoModel> {
   OsstpOptions? get option => OsstpOptions(
         method: RequestMethod.post.method,
         useDefaultParameter: false,
+        // standardService: false,
         // shouldDataMock: true,
       );
 
@@ -45,9 +47,9 @@ class UserInfoApi extends OsstpRequest<UserInfoModel> {
   get dataMock => {
         "id": 1,
         "username": "admin",
-        "mobile": "18888888888",
+        "mobile": "16891879187",
         "avatar": "",
-        "nickname": "",
+        "nickname": "HIVE",
         "introduction": "",
         "roles": [
           {

@@ -54,10 +54,9 @@ class _SettingHomePageState extends State<SettingHomePage> {
                     Container(
                       margin: const EdgeInsets.only(top: 88.0),
                       padding: const EdgeInsets.all(8.0),
-                      child: DebugTagWidget(
+                      child: DebugDisplayTagWidget(
                         fontSize: 50,
-                        releaseChildDisplay: false,
-                        releaseChild: Column(
+                        child: Column(
                           children: [
                             Row(
                               mainAxisSize: MainAxisSize.max,

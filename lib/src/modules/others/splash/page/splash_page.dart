@@ -1,6 +1,7 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../../../common/utils/string_utils.dart';
 import '../../../../../common/widget/debug_tag_widget.dart';
 import '../../../../../common/global/global_variable.dart';
 import '../../../../../generated/l10n.dart';
@@ -32,11 +33,9 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
       builder: (controller) {
         return Material(
           child: Scaffold(
-            backgroundColor: const Color(0xffF67900),
-            body: WillPopScope(
-              onWillPop: () async {
-                return false;
-              },
+            backgroundColor: GlobalVariable.isDebug ? null : const Color(0xffF67900),
+            body: PopScope(
+              canPop: false,
               child: Stack(
                 children: <Widget>[
                   Center(
@@ -68,27 +67,29 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
                           child: Text(
                             S.current.application_name,
                             style: const TextStyle(
-                                color: Color(0xFF00D6F7),
-                                fontFamily: ConstantFonts.STLITI,
-                                fontSize: 22.0,
-                                fontWeight: FontWeight.bold),
+                              color: Color(0xFF00D6F7),
+                              fontFamily: ConstantFonts.STLITI,
+                              fontSize: 22.0,
+                            ),
                           ),
                         ),
-                        DebugTagWidget(releaseChild: const Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.android_rounded,
-                              color: Colors.white,
-                              size: 20,
-                            ),
-                            Icon(
-                              Icons.apple_rounded,
-                              color: Colors.white,
-                              size: 20,
-                            ),
-                          ],
-                        ),),
+                        DebugDisplayTagWidget(
+                          child: const Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.android_rounded,
+                                color: Colors.white,
+                                size: 20,
+                              ),
+                              Icon(
+                                Icons.apple_rounded,
+                                color: Colors.white,
+                                size: 20,
+                              ),
+                            ],
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -123,12 +124,19 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
     String routing = "";
     bool? hasDisplay = OsstpLocalStorage.fromPrefs(LocalStoreKey.guideHasDisplay, isBoolValue: true);
     if (hasDisplay == true) {
-      routing = Routers.mainTabBar;
+      if (GlobalVariable.isProd == true && itIsNotEmpty(GlobalConstant.router)) {
+        // 打相应的渠道包
+        routing = GlobalConstant.router;
+      } else {
+        routing = Routers.mainTabBar;
+      }
     } else {
       routing = Routers.guidePage;
     }
-    final args = context.settings?.arguments;
-    if (args != null) {
+    //
+    NavigatePushArguments? arguments = context.settings?.arguments as NavigatePushArguments?;
+    if (arguments?.isPreview == true) {
+      // module 预览
       Application.pop(context);
     } else {
       Application.push(context, routing, replace: true);

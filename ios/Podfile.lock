@@ -1,0 +1,179 @@
+PODS:
+  - auto_orientation (0.0.1):
+    - Flutter
+  - awesome_notifications (0.8.1):
+    - Flutter
+    - IosAwnCore (~> 0.8.0)
+  - awesome_notifications_core (0.0.1):
+    - Flutter
+  - camera_avfoundation (0.0.1):
+    - Flutter
+  - device_info_plus (0.0.1):
+    - Flutter
+  - Flutter (1.0.0)
+  - fluttertoast (0.0.2):
+    - Flutter
+    - Toast
+  - image_cropper (0.0.4):
+    - Flutter
+    - TOCropViewController (~> 2.6.1)
+  - image_picker_ios (0.0.1):
+    - Flutter
+  - in_app_purchase_storekit (0.0.1):
+    - Flutter
+    - FlutterMacOS
+  - IosAwnCore (0.8.0)
+  - local_auth_darwin (0.0.1):
+    - Flutter
+  - osstp_badge (0.0.1):
+    - Flutter
+  - osstp_dialog (0.0.1):
+    - Flutter
+  - osstp_dynamic_theme (0.0.1):
+    - Flutter
+  - osstp_local_storage (0.0.1):
+    - Flutter
+  - osstp_main_tabbar (0.0.1):
+    - Flutter
+  - osstp_network (0.0.1):
+    - Flutter
+  - osstp_textfield (0.0.1):
+    - Flutter
+  - path_provider_foundation (0.0.1):
+    - Flutter
+    - FlutterMacOS
+  - permission_handler_apple (9.3.0):
+    - Flutter
+  - shared_preferences_foundation (0.0.1):
+    - Flutter
+    - FlutterMacOS
+  - sqflite (0.0.3):
+    - Flutter
+    - FlutterMacOS
+  - Toast (4.0.0)
+  - TOCropViewController (2.6.1)
+  - url_launcher_ios (0.0.1):
+    - Flutter
+  - vibration (1.7.5):
+    - Flutter
+  - webview_flutter_wkwebview (0.0.1):
+    - Flutter
+
+DEPENDENCIES:
+  - auto_orientation (from `.symlinks/plugins/auto_orientation/ios`)
+  - awesome_notifications (from `.symlinks/plugins/awesome_notifications/ios`)
+  - awesome_notifications_core (from `.symlinks/plugins/awesome_notifications_core/ios`)
+  - camera_avfoundation (from `.symlinks/plugins/camera_avfoundation/ios`)
+  - device_info_plus (from `.symlinks/plugins/device_info_plus/ios`)
+  - Flutter (from `Flutter`)
+  - fluttertoast (from `.symlinks/plugins/fluttertoast/ios`)
+  - image_cropper (from `.symlinks/plugins/image_cropper/ios`)
+  - image_picker_ios (from `.symlinks/plugins/image_picker_ios/ios`)
+  - in_app_purchase_storekit (from `.symlinks/plugins/in_app_purchase_storekit/darwin`)
+  - local_auth_darwin (from `.symlinks/plugins/local_auth_darwin/darwin`)
+  - osstp_badge (from `.symlinks/plugins/osstp_badge/ios`)
+  - osstp_dialog (from `.symlinks/plugins/osstp_dialog/ios`)
+  - osstp_dynamic_theme (from `.symlinks/plugins/osstp_dynamic_theme/ios`)
+  - osstp_local_storage (from `.symlinks/plugins/osstp_local_storage/ios`)
+  - osstp_main_tabbar (from `.symlinks/plugins/osstp_main_tabbar/ios`)
+  - osstp_network (from `.symlinks/plugins/osstp_network/ios`)
+  - osstp_textfield (from `.symlinks/plugins/osstp_textfield/ios`)
+  - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
+  - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
+  - shared_preferences_foundation (from `.symlinks/plugins/shared_preferences_foundation/darwin`)
+  - sqflite (from `.symlinks/plugins/sqflite/darwin`)
+  - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
+  - vibration (from `.symlinks/plugins/vibration/ios`)
+  - webview_flutter_wkwebview (from `.symlinks/plugins/webview_flutter_wkwebview/ios`)
+
+SPEC REPOS:
+  trunk:
+    - IosAwnCore
+    - Toast
+    - TOCropViewController
+
+EXTERNAL SOURCES:
+  auto_orientation:
+    :path: ".symlinks/plugins/auto_orientation/ios"
+  awesome_notifications:
+    :path: ".symlinks/plugins/awesome_notifications/ios"
+  awesome_notifications_core:
+    :path: ".symlinks/plugins/awesome_notifications_core/ios"
+  camera_avfoundation:
+    :path: ".symlinks/plugins/camera_avfoundation/ios"
+  device_info_plus:
+    :path: ".symlinks/plugins/device_info_plus/ios"
+  Flutter:
+    :path: Flutter
+  fluttertoast:
+    :path: ".symlinks/plugins/fluttertoast/ios"
+  image_cropper:
+    :path: ".symlinks/plugins/image_cropper/ios"
+  image_picker_ios:
+    :path: ".symlinks/plugins/image_picker_ios/ios"
+  in_app_purchase_storekit:
+    :path: ".symlinks/plugins/in_app_purchase_storekit/darwin"
+  local_auth_darwin:
+    :path: ".symlinks/plugins/local_auth_darwin/darwin"
+  osstp_badge:
+    :path: ".symlinks/plugins/osstp_badge/ios"
+  osstp_dialog:
+    :path: ".symlinks/plugins/osstp_dialog/ios"
+  osstp_dynamic_theme:
+    :path: ".symlinks/plugins/osstp_dynamic_theme/ios"
+  osstp_local_storage:
+    :path: ".symlinks/plugins/osstp_local_storage/ios"
+  osstp_main_tabbar:
+    :path: ".symlinks/plugins/osstp_main_tabbar/ios"
+  osstp_network:
+    :path: ".symlinks/plugins/osstp_network/ios"
+  osstp_textfield:
+    :path: ".symlinks/plugins/osstp_textfield/ios"
+  path_provider_foundation:
+    :path: ".symlinks/plugins/path_provider_foundation/darwin"
+  permission_handler_apple:
+    :path: ".symlinks/plugins/permission_handler_apple/ios"
+  shared_preferences_foundation:
+    :path: ".symlinks/plugins/shared_preferences_foundation/darwin"
+  sqflite:
+    :path: ".symlinks/plugins/sqflite/darwin"
+  url_launcher_ios:
+    :path: ".symlinks/plugins/url_launcher_ios/ios"
+  vibration:
+    :path: ".symlinks/plugins/vibration/ios"
+  webview_flutter_wkwebview:
+    :path: ".symlinks/plugins/webview_flutter_wkwebview/ios"
+
+SPEC CHECKSUMS:
+  auto_orientation: 102ed811a5938d52c86520ddd7ecd3a126b5d39d
+  awesome_notifications: db394d2e061e4583ba0f738ddea611e3986cc3fb
+  awesome_notifications_core: d02eed89738fa362d56cbd372850e9adcd2c6bef
+  camera_avfoundation: 759172d1a77ae7be0de08fc104cfb79738b8a59e
+  device_info_plus: c6fb39579d0f423935b0c9ce7ee2f44b71b9fce6
+  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  fluttertoast: 31b00dabfa7fb7bacd9e7dbee580d7a2ff4bf265
+  image_cropper: a3291c624a953049bc6a02e1f8c8ceb162a24b25
+  image_picker_ios: 99dfe1854b4fa34d0364e74a78448a0151025425
+  in_app_purchase_storekit: 0e4b3c2e43ba1e1281f4f46dd71b0593ce529892
+  IosAwnCore: ed1b2b6d84962a758354dbacd9ce525c72ce28a9
+  local_auth_darwin: c7e464000a6a89e952235699e32b329457608d98
+  osstp_badge: 648d96032a7cecf75b70b382812fc6886e184638
+  osstp_dialog: 45c8f37c3cdfc12db8fd56df6579b968230c7c4e
+  osstp_dynamic_theme: e14320efe3d46959f9849bfea1004f318d61d130
+  osstp_local_storage: f0715031f3afb3f787dc1765606f9de684ad24bd
+  osstp_main_tabbar: 4346e2faa2096d71630a91b686112d9de0bc201a
+  osstp_network: c69b510ca904965f6935cec1503f600d821afe60
+  osstp_textfield: 69339558aee63cbbbd53f269b46e1c31a65ec1a2
+  path_provider_foundation: 3784922295ac71e43754bd15e0653ccfd36a147c
+  permission_handler_apple: 036b856153a2b1f61f21030ff725f3e6fece2b78
+  shared_preferences_foundation: b4c3b4cddf1c21f02770737f147a3f5da9d39695
+  sqflite: 673a0e54cc04b7d6dba8d24fb8095b31c3a99eec
+  Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
+  TOCropViewController: edfd4f25713d56905ad1e0b9f5be3fbe0f59c863
+  url_launcher_ios: 6116280ddcfe98ab8820085d8d76ae7449447586
+  vibration: 7d883d141656a1c1a6d8d238616b2042a51a1241
+  webview_flutter_wkwebview: be0f0d33777f1bfd0c9fdcb594786704dbf65f36
+
+PODFILE CHECKSUM: 180cfb1103d2bf76ea0396dc1c37c1b49d051ed1
+
+COCOAPODS: 1.15.2

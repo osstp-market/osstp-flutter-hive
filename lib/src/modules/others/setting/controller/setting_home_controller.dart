@@ -37,7 +37,7 @@ class SettingHomeController extends SuperController {
           image: Icons.screen_lock_portrait,
           routesName: Routers.biometricSettingPage,
           needSpace: true,
-          child: DebugTagWidget(),
+          child: DebugDisplayTagWidget(),
         ),
       );
     }

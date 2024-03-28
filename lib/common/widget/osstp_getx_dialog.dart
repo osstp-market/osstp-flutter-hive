@@ -49,7 +49,7 @@ class GetXDialog {
   }
 
   ///
-  static Future<T?> general<T>({
+  static Future<T?> _general<T>({
     /// Gets default property
     required RoutePageBuilder pageBuilder,
     bool barrierDismissible = false,
@@ -70,23 +70,3 @@ class GetXDialog {
           routeSettings: routeSettings);
 }
 
-GetXDialogDebug(String? title) {
-  GetXDialog.show(
-    config: OsstpDialogConfig(
-        title: title,
-        showCancelButton: true,
-        contentWidget: const Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(
-              'Custom content widget',
-              textAlign: TextAlign.center,
-            ),
-            Text(
-              'Under construction',
-              textAlign: TextAlign.center,
-            )
-          ],
-        )),
-  );
-}

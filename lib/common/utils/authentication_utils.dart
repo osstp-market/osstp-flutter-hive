@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:local_auth/local_auth.dart';
+import 'package:local_auth_android/local_auth_android.dart';
+import 'package:local_auth_darwin/local_auth_darwin.dart';
+import 'package:local_auth_platform_interface/local_auth_platform_interface.dart';
 import '../../src/modules/routers/routers_config.dart';
 import '../../src/modules/routers/routers_navigator.dart';
 import '/common/utils/shared_preferences_utils.dart';
 import 'package:osstp_local_storage/osstp_local_storage.dart';
 
 import '../../../../../common/utils/logger.dart';
-
 
 enum SupportState {
   unknown,
@@ -56,10 +58,7 @@ class AuthenticationUtils {
     } on PlatformException catch (e) {
       biometrics = false;
       osstpLoggerNoStack.d(e);
-
-      return;
     }
-
     canCheckBiometrics.value = biometrics;
 
     if (canCheckBiometrics.value == true) {
@@ -80,8 +79,6 @@ class AuthenticationUtils {
     } on PlatformException catch (e) {
       biometrics = <BiometricType>[];
       osstpLoggerNoStack.d(e);
-
-      return;
     }
     availableBiometrics.value = biometrics;
   }
@@ -94,9 +91,20 @@ class AuthenticationUtils {
       authorized.value = 'Authenticating';
       authenticated = await auth.authenticate(
         localizedReason: 'Let OS determine authentication method',
-        // options: const AuthenticationOptions(
-        //   stickyAuth: true,
-        // ),
+        options: const AuthenticationOptions(
+          useErrorDialogs: false,
+          // stickyAuth: true,
+          // biometricOnly: true,
+        ),
+        authMessages: const <AuthMessages>[
+          AndroidAuthMessages(
+            signInTitle: 'Oops! Biometric authentication required!',
+            cancelButton: 'No thanks',
+          ),
+          IOSAuthMessages(
+            cancelButton: 'No thanks',
+          ),
+        ],
       );
       isAuthenticating.value = false;
       authedFinish(context, authenticated, valueCallback: valueCallback);
@@ -104,7 +112,6 @@ class AuthenticationUtils {
       isAuthenticating.value = false;
       authorized.value = 'Error - ${e.message}';
       authedFinish(context, authenticated, valueCallback: valueCallback);
-      return;
     }
     authorized.value = authenticated ? 'Authorized' : 'Not Authorized';
   }
@@ -118,8 +125,8 @@ class AuthenticationUtils {
       authenticated = await auth.authenticate(
         localizedReason: 'Scan your fingerprint (or face or whatever) to authenticate',
         options: const AuthenticationOptions(
-          useErrorDialogs: true,
-          stickyAuth: true,
+          useErrorDialogs: false,
+          // stickyAuth: true,
           biometricOnly: true,
         ),
       );
@@ -146,23 +153,24 @@ class AuthenticationUtils {
     // 自定义处理事件
     if (valueCallback != null) {
       valueCallback(authenticated);
-      return;
+    } else {
+      // 实现跳转
+      if (authenticated) {
+        Future.delayed(const Duration(seconds: 1)).then((value) {
+          if (Navigator.of(context).canPop()) {
+            Application.pop(context);
+          } else {
+            Application.push(context, Routers.mainTabBar, replace: true, transitionDuration: const Duration(seconds: 1))
+                ?.then((value) {});
+          }
+        });
+      }
     }
-    // 实现跳转
-    if (authenticated) {
-      Future.delayed(const Duration(seconds: 1)).then((value) {
-        if (Navigator.of(context).canPop()) {
-          Application.pop(context);
-        } else {
-          Application.push(context, Routers.mainTabBar, replace: true, transitionDuration: const Duration(seconds: 1))
-              ?.then((value) {});
-        }
-      });
-    }
+
   }
 
-  initBiometricsEnableConfig() {
-    bool? value = OsstpLocalStorage.fromPrefs(LocalStoreKey.biometricsEnable, isBoolValue: true);
+  initBiometricsEnableConfig() async {
+    bool? value = await OsstpLocalStorage.fromPrefs(LocalStoreKey.biometricsEnable, isBoolValue: true);
     biometricsEnable.value = value ?? false;
     return value ?? false;
   }

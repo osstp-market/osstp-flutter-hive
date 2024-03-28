@@ -28,10 +28,8 @@ class _InactivePageState extends State<InactivePage> with SingleTickerProviderSt
         return Material(
           child: Scaffold(
             backgroundColor: ThemeColors.scaffoldThemeColor(context),
-            body: WillPopScope(
-              onWillPop: () async {
-                return false;
-              },
+            body: PopScope(
+              canPop: false,
               child: Stack(
                 children: <Widget>[
                   const Center(
@@ -59,8 +57,7 @@ class _InactivePageState extends State<InactivePage> with SingleTickerProviderSt
                             style: const TextStyle(
                                 color: Color(0xFF00D6F7),
                                 fontFamily: ConstantFonts.STLITI,
-                                fontSize: 22.0,
-                                fontWeight: FontWeight.bold),
+                                fontSize: 22.0,),
                           ),
                         ),
                         Row(

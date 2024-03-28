@@ -16,7 +16,7 @@ class RegisterVerificationCodeWidget extends StatelessWidget {
       children: [
         OsstpTextFieldRounded(
           editingBorderColor: Colors.green,
-          idleBorderColor: Colors.black12,
+          idleBorderColor: Colors.blueGrey,
           borderWidth: 1,
           cornerRadius: 5,
           hintText: S.of(context).login_hint_phone,
@@ -36,7 +36,7 @@ class RegisterVerificationCodeWidget extends StatelessWidget {
           children: [
             Expanded(
               child: ElevatedButtonWidget.normal(
-                titleText: Text(S.of(context).login_verification_code),
+                titleText: Text(S.of(context).general_register),
                 onPressed: () {
                   registerController.register();
                 },

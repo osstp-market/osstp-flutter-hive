@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../../../common/widget/inkWell_button.dart';
 import '../../../../../generated/l10n.dart';
 import '/common/global/global_constant.dart';
 import '../../../../../common/config/application_config.dart';
@@ -29,40 +30,44 @@ class _BadgePageState extends State<BadgePage> with SingleTickerProviderStateMix
           appBar: MainAppBar(
             title: 'Badge',
             rightActionWidgets: [
-              const Icon(
-                Icons.notifications_off_rounded,
+              InkWellButton.InkWell(
+                child: const Icon(
+                  Icons.notifications_off_rounded,
+                ),
+                onTap: () {
+                  BadgeUtils.clear();
+                },
               ),
-              const Icon(
-                Icons.notifications,
+              InkWellButton.InkWell(
+                child: const Icon(
+                  Icons.notifications,
+                ),
+                onTap: () {
+                  BadgeUtils.badgeChangeWidget(index: 0, badge: '2');
+                  BadgeUtils.badgeChangeWidget(index: 1, badge: '90');
+                  BadgeUtils.badgeChangeWidget(
+                      index: 2,
+                      badgeWidget: Container(
+                        color: Colors.orange,
+                        height: 20,
+                        width: 20,
+                      ));
+                  BadgeUtils.clear(index: 99);
+                },
               ),
-              const Icon(
-                Icons.notification_add_rounded,
-              )
+              InkWellButton.InkWell(
+                child: const Icon(
+                  Icons.notification_add_rounded,
+                ),
+                onTap: () {
+                  BadgeUtils.badgeChangeWidget(index: 0, badge: '5');
+                  BadgeUtils.badgeChangeWidget(index: 1, badge: '105');
+                  BadgeUtils.badgeChangeWidget(index: 2, badge: '100');
+                  BadgeUtils.badgeChangeWidget(index: 3, badge: '90');
+                  BadgeUtils.badgeChangeWidget(index: 99, badge: '20');
+                },
+              ),
             ],
-            // rightActions: [],
-            onTapFunction: (OnTapModel tapModel) {
-              if (tapModel.index == 0) {
-                BadgeUtils.clear();
-              }
-              if (tapModel.index == 1) {
-                BadgeUtils.badgeChangeWidget(index: 0, badge: '2');
-                BadgeUtils.badgeChangeWidget(index: 1, badge: '90');
-                BadgeUtils.badgeChangeWidget(
-                    index: 2,
-                    badgeWidget: Container(
-                      color: Colors.orange,
-                      height: 20,
-                      width: 20,
-                    ));
-                BadgeUtils.clear(index: 99);
-              } else if (tapModel.index == 2) {
-                BadgeUtils.badgeChangeWidget(index: 0, badge: '5');
-                BadgeUtils.badgeChangeWidget(index: 1, badge: '105');
-                BadgeUtils.badgeChangeWidget(index: 2, badge: '100');
-                BadgeUtils.badgeChangeWidget(index: 3, badge: '90');
-                BadgeUtils.badgeChangeWidget(index: 99, badge: '20');
-              }
-            },
           ),
           body: Obx(() => SafeArea(
                 child: ListView(
@@ -118,10 +123,10 @@ class _BadgePageState extends State<BadgePage> with SingleTickerProviderStateMix
                           child: Text(
                             S.current.application_name,
                             style: const TextStyle(
-                                color: Color(0xFF00D6F7),
-                                fontFamily: ConstantFonts.STLITI,
-                                fontSize: 22.0,
-                                fontWeight: FontWeight.bold),
+                              color: Color(0xFF00D6F7),
+                              fontFamily: ConstantFonts.STLITI,
+                              fontSize: 22.0,
+                            ),
                           ),
                         ),
                       ],

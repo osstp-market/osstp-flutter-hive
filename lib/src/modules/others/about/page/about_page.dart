@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
+import '../../../../../common/theme/theme.dart';
+import '../../../../../common/utils/show_dialog.dart';
 import '/common/global/global_constant.dart';
-import '/common/widget/osstp_getx_dialog.dart';
 import '/common/widget/inkWell_button.dart';
 import '../../../../../common/config/application_config.dart';
 import '../../../../../common/widget/divider_line_widget.dart';
@@ -22,6 +23,7 @@ class AboutPage extends StatelessWidget {
         return Scaffold(
           appBar: MainAppBar(title: S.of(context).setting_about),
           body: SafeArea(
+            bottom: false,
             child: Column(
               children: [
                 Expanded(
@@ -40,10 +42,10 @@ class AboutPage extends StatelessWidget {
                             Text(
                               S.current.application_name,
                               style: const TextStyle(
-                                  color: Color(0xFF00D6F7),
-                                  fontFamily: ConstantFonts.STLITI,
-                                  fontSize: 22.0,
-                                  fontWeight: FontWeight.bold),
+                                color: Color(0xFF00D6F7),
+                                fontFamily: ConstantFonts.STLITI,
+                                fontSize: 22.0,
+                              ),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(top: 5.0),
@@ -65,7 +67,7 @@ class AboutPage extends StatelessWidget {
                             child: SlideAnimation(
                               verticalOffset: 50.0,
                               child: FadeInAnimation(
-                                child: buildItem(context, controller, index),
+                                child: _buildItem(context, controller, index),
                               ),
                             ),
                           );
@@ -75,8 +77,9 @@ class AboutPage extends StatelessWidget {
                   ),
                 ),
                 Container(
+                  color: ThemeColors.listItemBackgroundThemeColor(context),
                   alignment: Alignment.bottomCenter,
-                  margin: const EdgeInsets.only(bottom: 30.0),
+                  padding: const EdgeInsets.only(bottom: 30.0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
@@ -92,10 +95,10 @@ class AboutPage extends StatelessWidget {
                         textAlign: TextAlign.center,
                         style: const TextStyle(fontSize: 12),
                       ),
-                      const Text(
-                        "Copyright © 2020-2024 OSSTP.All Rights Reserved",
+                      Text(
+                        ApplicationConfig.copyright,
                         textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 12),
+                        style: const TextStyle(fontSize: 12),
                       ),
                       const Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -121,15 +124,16 @@ class AboutPage extends StatelessWidget {
     );
   }
 
-  buildItem(BuildContext context, AboutController controller, int index) {
+  _buildItem(BuildContext context, AboutController controller, int index) {
     return InkWellButton.InkWell(
+      backgroundColor: ThemeColors.listItemBackgroundThemeColor(context),
       onTap: () {
         if (controller.itemList[index].routesName == "") {
           GetXDialogDebug(controller.itemList[index].title);
         }
       },
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
+        padding: const EdgeInsets.only(left: 15, right: 15),
         child: Column(
           children: [
             Offstage(

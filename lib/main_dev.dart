@@ -16,7 +16,7 @@ void main() {
     // New project should set yourself parameters by
     // ApplicationConfig instance
     await ApplicationConfig.instance
-        .initConfig(Flavor.dev, baseUrl: "http://localhost:8088/mobile");
+        .initConfig(Flavor.dev, baseUrl: "http://localhost:8088/mobile", standardService: false, shouldDataMock: true);
     OsstpDynamicThemeMode? themeMode = await OsstpDynamicTheme.getThemeMode();
     runApp(MainApp(themeMode: themeMode));
 

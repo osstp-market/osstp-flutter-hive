@@ -81,7 +81,7 @@ class MineHeaderView extends StatelessWidget {
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  Text(stringValue("${userInfo?.id}", placeholder: '--')),
+                                  Text(stringValue(userInfo?.mobileFormat, placeholder: '--')),
                                 ],
                               ),
                             ],

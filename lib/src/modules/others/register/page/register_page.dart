@@ -1,7 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/simple/get_state.dart';
 import '/src/modules/others/register/view/register_verification_code_widget.dart';
 
 import '../../../../../common/theme/theme.dart';

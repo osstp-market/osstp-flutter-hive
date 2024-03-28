@@ -44,12 +44,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Pull up load"),
         "general_register": MessageLookupByLibrary.simpleMessage("Sign in"),
         "general_save": MessageLookupByLibrary.simpleMessage("Save"),
+        "general_service_data_abnormal": MessageLookupByLibrary.simpleMessage(
+            "Data on the server is abnormal"),
         "general_submit": MessageLookupByLibrary.simpleMessage("Submit"),
         "home_banner": MessageLookupByLibrary.simpleMessage("Rolling Banner"),
         "home_edit_preview": MessageLookupByLibrary.simpleMessage("Preview"),
         "local_auth": MessageLookupByLibrary.simpleMessage("Authentication"),
-        "login_agree_policy":
-            MessageLookupByLibrary.simpleMessage("请阅读并同意用户协议和隐私政策"),
+        "login_agree_policy": MessageLookupByLibrary.simpleMessage(
+            "Please read and agree to the User Agreement and Privacy Policy"),
         "login_and": MessageLookupByLibrary.simpleMessage("and"),
         "login_hello":
             MessageLookupByLibrary.simpleMessage("Hello,\nWelcome to HIVE"),
@@ -85,10 +87,20 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("HIVE Intro"),
         "setting_about_introduced": MessageLookupByLibrary.simpleMessage(
             "A cross-platform product architecture APP, the basic functional components are highly packaged, low coupling, according to product requirements, rapid integration, release of high-quality products."),
+        "setting_available_biometrics":
+            MessageLookupByLibrary.simpleMessage("Available biometrics:"),
+        "setting_biometrics_open": MessageLookupByLibrary.simpleMessage(
+            "Whether to enable biometrics:"),
+        "setting_biometrics_support": MessageLookupByLibrary.simpleMessage(
+            "Whether biometrics are supported:"),
+        "setting_biometrics_unavailable":
+            MessageLookupByLibrary.simpleMessage("Unavailable:"),
         "setting_change_alert":
             MessageLookupByLibrary.simpleMessage("Save the current operation?"),
         "setting_current_language":
             MessageLookupByLibrary.simpleMessage("Current Language"),
+        "setting_custom_theme":
+            MessageLookupByLibrary.simpleMessage("Custom theme"),
         "setting_dark_type": MessageLookupByLibrary.simpleMessage("Dark"),
         "setting_default_system":
             MessageLookupByLibrary.simpleMessage("System"),
@@ -96,12 +108,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "setting_language": MessageLookupByLibrary.simpleMessage("Language"),
         "setting_modules": MessageLookupByLibrary.simpleMessage("Modules"),
         "setting_normal_type": MessageLookupByLibrary.simpleMessage("Normal"),
+        "setting_not_support":
+            MessageLookupByLibrary.simpleMessage("non-supported"),
         "setting_reset": MessageLookupByLibrary.simpleMessage("Reset"),
         "setting_reset_description": MessageLookupByLibrary.simpleMessage(
             "Note: After the reset (initializing all local configurations), preview the default configuration"),
         "setting_reset_or_not":
             MessageLookupByLibrary.simpleMessage("Do you want to reset?"),
         "setting_setting": MessageLookupByLibrary.simpleMessage("Setting"),
+        "setting_setting_success":
+            MessageLookupByLibrary.simpleMessage("Setting Success"),
+        "setting_support": MessageLookupByLibrary.simpleMessage("Support"),
         "setting_system_description": MessageLookupByLibrary.simpleMessage(
             "After it is enabled, it will follow the system to turn on or off the dark mode"),
         "setting_theme": MessageLookupByLibrary.simpleMessage("Dark Mode"),

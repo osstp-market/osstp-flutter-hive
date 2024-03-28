@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../common/utils/selected_item_model.dart';
-import '../../others/webview/page/webview_loading_widget_page.dart';
 import '../../routers/routers_config.dart';
 
 class ModuleController extends SuperController {
@@ -14,10 +13,10 @@ class ModuleController extends SuperController {
     SelectedItemModel(title: "登录", image: Icons.login_rounded, routesName: Routers.loginPage),
     SelectedItemModel(title: "注册", image: Icons.app_registration_rounded, routesName: Routers.registerPage),
     SelectedItemModel(title: "身份认证", image: Icons.safety_check_rounded, routesName: Routers.biometricPage),
-    SelectedItemModel(title: "Web View", image: Icons.web_rounded, routesName: Routers.webViewLoadingPage, routeSettings: RouteSettings(
-      name: Routers.webViewLoadingPage,
-      arguments: WebViewLoadingModel(title: "admin", url: "http://10.10.216.203:8080/"),
-    )),
+    SelectedItemModel(
+        title: "通知设定", image: Icons.edit_notifications_rounded, routesName: Routers.notificationSettingPage),
+    SelectedItemModel(title: "Refresh Listview", image: Icons.refresh_rounded, routesName: Routers.refreshPage),
+    SelectedItemModel(title: "时钟天气", image: Icons.access_time_rounded, routesName: Routers.clockPage),
     SelectedItemModel(title: "设备信息", image: Icons.perm_device_info_rounded, routesName: Routers.deviceInfoPage),
   ].obs;
 

@@ -11,65 +11,28 @@ class OnTapModel {
 typedef OnTapFunction = Function(OnTapModel onTapModel);
 
 /// [AppBar]
-MainAppBar(
-    {Key? key,
-    String? title,
-    Widget? leading,
-    bool? useDefaultCustomLeading = false,
-    VoidCallback? leadingCallback,
-    bool? centerTitle,
-    bool automaticallyImplyLeading = true,
+MainAppBar({
+  Key? key,
+  String? title,
+  Widget? leading,
+  bool? useDefaultCustomLeading = false,
+  VoidCallback? leadingCallback,
+  bool? centerTitle,
+  bool automaticallyImplyLeading = true,
 
-    /// custom Widget action
-    List<Widget>? rightActionWidgets,
-
-    /// only title
-    List<String>? rightActions,
-    Color? backgroundColor,
-    Color? foregroundColor,
-    double? elevation,
-    OnTapFunction? onTapFunction}) {
-  assert(rightActionWidgets == null || rightActions == null,
-      'Must not use together, please use [MainAppBarRightItemWidget] in [rightActions], so that the same to [rightActions]');
-
+  /// custom Widget action
+  List<Widget>? rightActionWidgets,
+  Color? backgroundColor,
+  Color? foregroundColor,
+  double? elevation,
+}) {
   /// title
   Widget? titleWidget = title == null ? null : Text(title);
 
   List<Widget> action = [];
 
   for (Widget widget in rightActionWidgets ?? []) {
-    int index = rightActionWidgets!.indexOf(widget);
-    action.add(
-      InkWell(
-        onTap: () {
-          if (onTapFunction != null) {
-            onTapFunction(OnTapModel(index: index, child: widget));
-          }
-        },
-        child: Padding(
-          padding: const EdgeInsets.all(10),
-          child: widget,
-        ),
-      ),
-    );
-  }
-
-  int temIndex = rightActionWidgets?.length ?? 0;
-
-  for (String element in rightActions ?? []) {
-    int index = rightActions!.indexOf(element);
-    action.add(
-      InkWell(
-        onTap: () {
-          if (onTapFunction != null) {
-            onTapFunction(OnTapModel(index: index + temIndex, name: element));
-          }
-        },
-        child: MainAppBarRightItemWidget(
-          title: element,
-        ),
-      ),
-    );
+    action.add(widget);
   }
 
   return AppBar(

@@ -24,6 +24,14 @@ class UserInfoModel {
   String? introduction;
   @JsonProperty(name: 'roles')
   List<UserRoleModel>? roles;
+
+  get mobileFormat {
+    if (mobile != null && mobile!.length >= 11) {
+      return mobile!.replaceRange(3, 7, "****");
+    } else {
+      return "";
+    }
+  }
 }
 
 @jsonSerializable

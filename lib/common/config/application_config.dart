@@ -10,11 +10,12 @@ class ApplicationConfig extends AbstractApplicationConfig {
   static final ApplicationConfig _instance = ApplicationConfig();
   static ApplicationConfig get instance => _instance;
 
-  /// App Name
-  static String bundleVersion = "1.0.0";
-  static Widget logoWidget = const Icon(Icons.hive_rounded, size: 100);
-  static String defaultLanguage = "zh";
-  static List<String> supportLanguage = ["zh", "en"];
+  /// App init default config
+  static String bundleVersion = "";
+  static Widget logoWidget = const SizedBox();
+  static String defaultLanguage = "";
+  static List<String> supportLanguage = [];
+  static String copyright = "";
 
   /// init config
   @override
@@ -25,17 +26,21 @@ class ApplicationConfig extends AbstractApplicationConfig {
     Widget logoWidget = const Icon(Icons.hive_rounded, size: 100),
     String defaultLanguage = "zh",
     List<String> supportLanguage = const ["zh", "en"],
+    String copyright = "Copyright © 2020-2024 OSSTP.All Rights Reserved",
+    bool standardService = true,
+    bool shouldDataMock = false,
   }) async {
     ApplicationConfig.bundleVersion = bundleVersion;
     ApplicationConfig.logoWidget = logoWidget;
     ApplicationConfig.defaultLanguage = defaultLanguage;
     ApplicationConfig.supportLanguage = supportLanguage;
+    ApplicationConfig.copyright = copyright;
 
     await OsstpLocalStorage.initConfig();
     await LocalizationsUtils.current.initConfig();
 
     ///
-    ConfigManager.initConfig(flavor, baseUrl);
+    await ConfigManager.initConfig(flavor, baseUrl, standardService: standardService, shouldDataMock: shouldDataMock);
   }
 
   /// reset config

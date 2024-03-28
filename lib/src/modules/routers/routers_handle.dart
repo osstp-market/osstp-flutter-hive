@@ -1,8 +1,17 @@
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:osstp_dynamic_theme/osstp_dynamic_theme.dart';
+import '../../../../../src/modules/others/theme/page/theme_picker_page.dart';
+import '../others/clock/page/clock_page.dart';
+import '../others/notification/page/media_details_page.dart';
+import '../others/notification/page/notification_details_page.dart';
+import '../others/notification/page/phone_call_page.dart';
 
-
+import '../others/notification/controller/notification_controller.dart';
+import '../others/notification/page/notification_setting_page.dart';
+import '../others/refresh/page/refresh_page.dart';
 import '../../main_tabbar/page/main_tabbar_page.dart';
 import '../module/page/module_page.dart';
 import '../others/about/page/about_page.dart';
@@ -20,7 +29,6 @@ import '../others/login/page/login_page.dart';
 import '../others/register/page/register_page.dart';
 import '../others/splash/page/splash_page.dart';
 import '../others/webview/page/webview_loading_widget_page.dart';
-import '../others/setting/page/setting_home_page.dart';
 
 var routeNotFoundHandle = Handler(
   type: HandlerType.function,
@@ -72,12 +80,38 @@ var mainTabBarRouteHandler = Handler(handlerFunc: (BuildContext? context, Map<St
 var modulePageRouteHandler = Handler(handlerFunc: (BuildContext? context, Map<String, List<String>> params) {
   return const ModulePage();
 });
+var notificationSettingPageRouteHandler =
+    Handler(handlerFunc: (BuildContext? context, Map<String, List<String>> params) {
+  return const NotificationSettingPage();
+});
+
+var notificationDetailPageRouteHandler =
+    Handler(handlerFunc: (BuildContext? context, Map<String, List<String>> params) {
+  ReceivedNotification receivedNotification = ModalRoute.of(context!)!.settings.arguments as ReceivedNotification;
+  return NotificationDetailsPage(receivedNotification);
+});
+
+var mediaDetailsPageRouteHandler = Handler(handlerFunc: (BuildContext? context, Map<String, List<String>> params) {
+  return const MediaDetailsPage();
+});
+var phoneCallPageRouteHandler = Handler(handlerFunc: (BuildContext? context, Map<String, List<String>> params) {
+  ReceivedAction? receivedAction = ModalRoute.of(context!)!.settings.arguments == null
+      ? NotificationsController.initialCallAction
+      : ModalRoute.of(context)!.settings.arguments as ReceivedAction;
+  return PhoneCallPage(
+    receivedAction: receivedAction!,
+  );
+});
 var registerPageHandler = Handler(handlerFunc: (BuildContext? context, Map<String, List<String>> params) {
   return const RegisterPage();
 });
 var loginPageHandler = Handler(handlerFunc: (BuildContext? context, Map<String, List<String>> params) {
   return const LoginPage();
 });
+var clockPageHandler = Handler(handlerFunc: (BuildContext? context, Map<String, List<String>> params) {
+  return const ClockPage();
+});
+
 // var editPreviewPageRouteHandler = Handler(handlerFunc: (BuildContext? context, Map<String, List<String>> params) {
 //   return EditPreviewPage();
 // });
@@ -121,9 +155,19 @@ var settingThemeSettingPageHandler = Handler(handlerFunc: (BuildContext? context
 // return DemoSimpleComponent(message: message, color: color, result: result);
   return const ThemeSettingPage();
 });
+var colorPickerPagePageHandler = Handler(handlerFunc: (BuildContext? context, Map<String, List<String>> params) {
+  ThemeColorModel? arguments = context?.settings?.arguments as ThemeColorModel?;
+  return ColorPickerPage(
+    themeColorModel: arguments,
+  );
+});
 var mineProfilePageHandler = Handler(handlerFunc: (BuildContext? context, Map<String, List<String>> params) {
 // return DemoSimpleComponent(message: message, color: color, result: result);
   return const MineProfilePage();
+});
+var refreshPageHandler = Handler(handlerFunc: (BuildContext? context, Map<String, List<String>> params) {
+// return DemoSimpleComponent(message: message, color: color, result: result);
+  return const RefreshPage();
 });
 var deviceInfoPageHandler = Handler(handlerFunc: (BuildContext? context, Map<String, List<String>> params) {
   return const DeviceInfoPage();

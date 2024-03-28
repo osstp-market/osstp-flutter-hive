@@ -280,6 +280,16 @@ class S {
     );
   }
 
+  /// `Data on the server is abnormal`
+  String get general_service_data_abnormal {
+    return Intl.message(
+      'Data on the server is abnormal',
+      name: 'general_service_data_abnormal',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Hello,\nWelcome to HIVE`
   String get login_hello {
     return Intl.message(
@@ -330,10 +340,10 @@ class S {
     );
   }
 
-  /// `请阅读并同意用户协议和隐私政策`
+  /// `Please read and agree to the User Agreement and Privacy Policy`
   String get login_agree_policy {
     return Intl.message(
-      '请阅读并同意用户协议和隐私政策',
+      'Please read and agree to the User Agreement and Privacy Policy',
       name: 'login_agree_policy',
       desc: '',
       args: [],
@@ -395,6 +405,16 @@ class S {
     return Intl.message(
       'Setting',
       name: 'setting_setting',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Setting Success`
+  String get setting_setting_success {
+    return Intl.message(
+      'Setting Success',
+      name: 'setting_setting_success',
       desc: '',
       args: [],
     );
@@ -505,6 +525,76 @@ class S {
     return Intl.message(
       'Dark',
       name: 'setting_dark_type',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Custom theme`
+  String get setting_custom_theme {
+    return Intl.message(
+      'Custom theme',
+      name: 'setting_custom_theme',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Whether biometrics are supported:`
+  String get setting_biometrics_support {
+    return Intl.message(
+      'Whether biometrics are supported:',
+      name: 'setting_biometrics_support',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Support`
+  String get setting_support {
+    return Intl.message(
+      'Support',
+      name: 'setting_support',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `non-supported`
+  String get setting_not_support {
+    return Intl.message(
+      'non-supported',
+      name: 'setting_not_support',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Whether to enable biometrics:`
+  String get setting_biometrics_open {
+    return Intl.message(
+      'Whether to enable biometrics:',
+      name: 'setting_biometrics_open',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Available biometrics:`
+  String get setting_available_biometrics {
+    return Intl.message(
+      'Available biometrics:',
+      name: 'setting_available_biometrics',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unavailable:`
+  String get setting_biometrics_unavailable {
+    return Intl.message(
+      'Unavailable:',
+      name: 'setting_biometrics_unavailable',
       desc: '',
       args: [],
     );
