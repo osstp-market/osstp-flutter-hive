@@ -6,13 +6,12 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:osstp_dialog/osstp_dialog.dart';
 import 'package:osstp_dynamic_theme/osstp_dynamic_theme.dart';
-import '/src/modules/routers/routers_config.dart';
-import '/src/modules/routers/routers_navigator.dart';
-import '/src/modules/routers/routers_observer.dart';
+import 'src/routers/routers_config.dart';
+import 'src/routers/routers_navigator.dart';
+import 'src/routers/routers_observer.dart';
 
 import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 import 'common/config/application_config.dart';
-import 'src/modules/others/notification/controller/notification_controller.dart';
 import 'common/global/global_constant.dart';
 import 'generated/l10n.dart';
 
@@ -29,7 +28,7 @@ class _MainAppState extends State<MainApp> {
     super.initState();
 
     /// Notification listening start
-    NotificationsController.initializeNotificationsEventListeners();
+    // NotificationsController.initializeNotificationsEventListeners();
 
     /// init router
     final router = FluroRouter();

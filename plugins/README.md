@@ -13,8 +13,10 @@ These are the available plugins in private repository.
 
 # NOTE
 
-| **PRIVATE**                    |
-|--------------------------------|
-| 私有仓库为工程核心 目前不准备公开 工程整体架构思路仅供参考 |
+<div align="center">
 
+| **PRIVATE** |
+|-------------|
+| [私有仓库为工程核心 不打算公开 工程整体架构思路仅供参考](./plugins/)|
 
+</div>

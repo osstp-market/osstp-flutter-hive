@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../src/modules/routers/routers_config.dart';
 
 final GlobalKey<NavigatorState> globalNavigatorKey = GlobalKey<NavigatorState>();
 

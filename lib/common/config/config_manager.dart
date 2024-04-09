@@ -7,7 +7,6 @@ import '../utils/badge_utils.dart';
 import '/common/global/global_variable.dart';
 import '../widget/loading_widget.dart';
 import '../widget/osstp_getx_dialog.dart';
-import '../../src/modules/others/notification/controller/notification_controller.dart';
 
 class ConfigManager {
   /*
@@ -36,9 +35,6 @@ class ConfigManager {
     }
 
     // Base config
-    // Always initialize Awesome Notifications
-    await NotificationsController.initializeLocalNotifications();
-    await NotificationsController.initializeIsolateReceivePort();
     BadgeUtils.badgeConfig();
     await AuthenticationUtils.instance.initBiometricsEnableConfig();
 

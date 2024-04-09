@@ -5,8 +5,8 @@ import 'package:local_auth/local_auth.dart';
 import 'package:local_auth_android/local_auth_android.dart';
 import 'package:local_auth_darwin/local_auth_darwin.dart';
 import 'package:local_auth_platform_interface/local_auth_platform_interface.dart';
-import '../../src/modules/routers/routers_config.dart';
-import '../../src/modules/routers/routers_navigator.dart';
+import '../../src/routers/routers_config.dart';
+import '../../src/routers/routers_navigator.dart';
 import '/common/utils/shared_preferences_utils.dart';
 import 'package:osstp_local_storage/osstp_local_storage.dart';
 

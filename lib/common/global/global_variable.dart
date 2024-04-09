@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 
-import '../../src/modules/others/login/model/user_info_model.dart';
+import '../../src/login/model/user_info_model.dart';
+
 
 class GlobalVariable {
   static final auth = false.obs;

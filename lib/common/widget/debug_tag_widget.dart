@@ -18,13 +18,15 @@ class DebugDisplayTagWidget extends StatelessWidget {
       children: [
         GlobalVariable.isDebug
             ? Container(
-                color: Colors.redAccent.withOpacity(0.2),
+                color: Colors.limeAccent.withOpacity(0.2),
                 child:
                     Text("DEBUG", style: TextStyle(fontSize: (fontSize ?? 15), color: Colors.orange.withOpacity(0.5))))
             : const SizedBox(),
         GlobalVariable.isDebug ? (child ?? const SizedBox()) : const SizedBox(),
         GlobalVariable.isDebug
-            ? Text("DEBUG", style: TextStyle(fontSize: (fontSize ?? 15), color: Colors.orange.withOpacity(0.5)))
+            ? IgnorePointer(
+                child:
+                    Text("DEBUG", style: TextStyle(fontSize: (fontSize ?? 15), color: Colors.orange.withOpacity(0.2))))
             : const SizedBox(),
       ],
     );

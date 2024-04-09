@@ -5,9 +5,8 @@ import 'package:osstp_main_tabbar/osstp_main_tabbar.dart';
 import '../../../common/global/global_variable.dart';
 import '../../../common/utils/badge_utils.dart';
 import '../../../common/utils/show_dialog.dart';
-
-import '../../modules/routers/routers_config.dart';
-import '../../modules/routers/routers_page_manager.dart';
+import '../../routers/routers_config.dart';
+import '../../routers/routers_page_manager.dart';
 import '../controller/main_tabbar_controller.dart';
 import '../view/main_tabbar_indexed_stack_view.dart';
 

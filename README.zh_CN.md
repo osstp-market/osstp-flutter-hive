@@ -1,14 +1,19 @@
+<div align="center">
+
 # HIVE
 
-## 你只需要负责业务开发，其他交给HIVE！！
+## 你只需要负责业务开发，其他交给HIVE
+
+</div>
 
 - [English](./README.md)
 - [简体中文](./README.zh_CN.md)
 
 # 简介
+
 HIVE：一款跨平台的产品级架构APP脚手架，Flutter开发，同时支持Android和iOS平台，基础功能组件高度封装、低耦合，可以根据产品需求，快速集成、发布高质量产品。
 
-## 1.使用HIVE说明
+# 运行环境
 ```
 - Flutter SDK版本  v3.19.0
 - IDE推荐：Android Studio
@@ -16,32 +21,38 @@ HIVE：一款跨平台的产品级架构APP脚手架，Flutter开发，同时支
 - 最低支持Android 5.0系统
 ```
 
+## 1.HIVE使用说明
+
 使用方式有两种：
 
 1、直接克隆此仓库代码，修改相应的配置，开发新项目的业务逻辑，基础工具类基本满足开发需求；
 
-2、使用[git subtree add]()方式管理[HIVE]()源代码，后续基础功能组件完善，方便升级更新；
+2、使用[git subtree add]()方式拉取[HIVE]()源代码，后续[HIVE]()基础组件完善，方便升级更新；
 
-下面是 git subtree add 使用说明：
+推荐使用 git subtree add 方式：
 
-git subtree add --prefix=sub/project 新建<new project name>工程时，拉取源基础代码作为开发库
+1）新建<new project name>工程，[git subtree add --prefix=sub/project]() 拉取[HIVE]()源代码作为初始项目：
+
 ```shell
-git subtree add --prefix=<new project name> https://github.com/osstp-market/osstp-flutter-hive.git main --squash
+git subtree add --prefix=<new project name> https://github.com/osstp-market/osstp-flutter-hive.git release --squash
 ```
-[注意：[git subtree add --prefix=...]拉取源代码后，立即新建一个SRC分支，此分支只用来拉取HIVE最新代码，然后再合并到开发分支。开发新功能时，新建分支，也不要将代码合并到SRC分支中，方便新项目和HIVE代码分离。]()
 
-推送到新工程<new project name>仓库
+[注意：[git subtree add --prefix=...]拉取源代码后，建议立即新建一个SRC分支，此分支从始至终只用来拉取HIVE最新代码，然后再将最新版本内容合并到开发分支（可能会有冲突，需要解决）。新建开发业务分支后，不要将代码合并到SRC分支中，而是将SRC分支代码合并到业务分支中，可以时时利用HIVE最新的基础组件。]()
+
+2）将新建的SRC和业务代码分支推送到远程<new project name>仓库：
 ```shell
 git push
 ```
-从源仓库拉取更新最新代码
-```shell
-git subtree pull --prefix=<new project name> https://github.com/osstp-market/osstp-flutter-hive.git main --squash
-```
-推送修改到源代码仓库（[源代码管理员权限]()，基础库封装内容在源代码仓库修改后提交，新项目再从源仓库拉取更新最新代码）
 
+3）从[HIVE]()源仓库拉取更新最新的基础组件：
 ```shell
-git subtree push --prefix=<new project name> https://github.com/osstp-market/osstp-flutter-hive.git main
+git subtree pull --prefix=<new project name> https://github.com/osstp-market/osstp-flutter-hive.git release --squash
+```
+
+[HIVE管理员权限]()（不建议，最好从HIVE源代码仓库修改，其他业务代码仓库只负责拉取更新）
+直接在新项目业务代码修改[HIVE]()源代码，然后推送到源代码仓库：
+```shell
+git subtree push --prefix=<new project name> https://github.com/osstp-market/osstp-flutter-hive.git release
 ```
 
 ## 2、修改HIVE配置后，开发新App业务功能，实现快速基础功能配置
@@ -59,28 +70,36 @@ git subtree push --prefix=<new project name> https://github.com/osstp-market/oss
 1、在plugins目录引入私有库，具体请看[README.md](./plugins/README.md)
 
 2、在工程根目录下执行下面脚本，实现model序列化功能
+
 ```bash
 dart run build_runner build --delete-conflicting-outputs
 ```
+
 3、Edit Configurations 设置开发环境，运行工程项目
+
 ````
 工程默认配置[dev][sit][uat][prod]环境
 在Build flavor设置dev、sit、uat、prod分别指向main_dev.dart、main_sit.dart、main_uat.dart、main_prod.dart时，与上面四个环境一一对应
 可以根据开发测试需求，指定编译运行
 ````
+
 ## 2.架构实现的基础功能
-* [启动画面]()
-* [引导画面]()
-* [Badge显示]()
-* [国际化（English, Chinese）]()
-* [暗黑模式]()
-* [登录]()
-* [注册]()
-* [画面切换全局监听]()
-* [列表下拉刷新 上拉加载更多]()
+
+- [启动画面]()
+- [引导画面]()
+- [Badge显示]()
+- [国际化（English, Chinese）]()
+- [暗黑模式]()
+- [登录]()
+- [注册]()
+- [画面切换全局监听]()
+- [列表下拉刷新 上拉加载更多]()
 
 # 打包脚本
+
 iOS打包
+
+```
 flutter build ios --release --flavor dev --target lib/main_dev.dart
 cd ios
 fastlane dev
@@ -93,16 +112,23 @@ fastlane uat
 flutter build ios --release --flavor prod --target lib/main_prod.dart
 cd ios
 fastlane pro
+```
 
 Android 打包
+
+```
 flutter build apk -t lib/main_dev.dart --flavor dev
 flutter build apk -t lib/main_sit.dart --flavor sit
 flutter build apk -t lib/main_uat.dart --flavor uat
 flutter build apk -t lib/main_prod.dart --flavor prod
-
+```
 
 # NOTE
 
+<div align="center">
+
 | **PRIVATE** |
 |-------------|
-| [私有仓库为工程核心 目前不准备公开 工程整体架构思路仅供参考]()|
+| [私有仓库为工程核心 不打算公开 工程整体架构思路仅供参考](./plugins/)|
+
+</div>
