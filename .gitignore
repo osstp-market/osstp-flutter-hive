@@ -29,6 +29,7 @@ doc/api/
 # Local compilation configuration
 .idea
 # Customize private plugins
+lib/src/modules
 plugins/osstp-dynamic-theme
 plugins/osstp-local-storage
 plugins/osstp-main-tabbar
