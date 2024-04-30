@@ -81,6 +81,20 @@ dependencies:
 #  stop_watch_timer: ^3.1.0+4
 #  auto_orientation: ^2.3.1
 #  weather_icons: ^3.0.0
+#  syncfusion_flutter_calendar: ^25.1.39
+#  syncfusion_flutter_datepicker:
+  empty_widget: ^0.0.5
+  path: ^1.8.3
+  path_provider: ^2.1.1
+  flutter_swipe_action_cell: ^3.1.3
+  tdesign_flutter: ^0.1.4
+
+  collection: any
+  sqflite:
+  sqflite_common:
+  synchronized:
+  matcher:
+  meta:
 
 
   # custom plugins

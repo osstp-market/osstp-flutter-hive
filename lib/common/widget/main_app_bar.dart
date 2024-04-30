@@ -14,6 +14,7 @@ typedef OnTapFunction = Function(OnTapModel onTapModel);
 MainAppBar({
   Key? key,
   String? title,
+  Widget? titleWidget,
   Widget? leading,
   bool? useDefaultCustomLeading = false,
   VoidCallback? leadingCallback,
@@ -27,7 +28,7 @@ MainAppBar({
   double? elevation,
 }) {
   /// title
-  Widget? titleWidget = title == null ? null : Text(title);
+  Widget? navTitle = titleWidget ?? (title == null ? null : Text(title));
 
   List<Widget> action = [];
 
@@ -41,7 +42,7 @@ MainAppBar({
     backgroundColor: backgroundColor,
     foregroundColor: foregroundColor,
     elevation: elevation,
-    title: titleWidget,
+    title: navTitle,
     centerTitle: centerTitle,
     automaticallyImplyLeading: automaticallyImplyLeading,
     actions: action,

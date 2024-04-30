@@ -122,7 +122,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "setting_system_description": MessageLookupByLibrary.simpleMessage(
             "After it is enabled, it will follow the system to turn on or off the dark mode"),
         "setting_theme": MessageLookupByLibrary.simpleMessage("Dark Mode"),
-        "tabbar_favor": MessageLookupByLibrary.simpleMessage("favor"),
+        "tabbar_favor": MessageLookupByLibrary.simpleMessage("Favor"),
         "tabbar_home": MessageLookupByLibrary.simpleMessage("Home"),
         "tabbar_mine": MessageLookupByLibrary.simpleMessage("Me"),
         "tabbar_module": MessageLookupByLibrary.simpleMessage("Module"),

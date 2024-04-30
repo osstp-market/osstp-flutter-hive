@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../database/database.dart';
 import 'abstract_application_config.dart';
 import '../../common/utils/localizations_utils.dart';
 import 'package:osstp_local_storage/osstp_local_storage.dart';
@@ -39,7 +40,9 @@ class ApplicationConfig extends AbstractApplicationConfig {
     await OsstpLocalStorage.initConfig();
     await LocalizationsUtils.current.initConfig();
 
-    ///
+    // init database path
+    await dbPathConfig();
+
     await ConfigManager.initConfig(flavor, baseUrl, standardService: standardService, shouldDataMock: shouldDataMock);
   }
 

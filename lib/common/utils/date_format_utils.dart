@@ -9,7 +9,35 @@ class DateFormatUtils {
   static List<String> ymdhn = [yyyy, '-', mm, '-', dd, ' ', HH, ':', nn];
   static List<String> ymdh = [yyyy, '-', mm, '-', dd, ' ', HH];
   static List<String> yearMonth = [yyyy, '年', mm, '月'];
+  static List<String> hn = [HH, ':', nn];
 
+  static String getWeekdayName(int index) {
+    if (index == null || index < 0 || index > 6) {
+      return '';
+    }
+    final weekdays = [
+      '日',
+      '一',
+      '二',
+      '三',
+      '四',
+      '五',
+      '六',
+    ];
+    return weekdays[index];
+  }
+
+  // 时间转换成： 年-月-日,星期 时间
+  static dateTimeWithWeekday(String? dateTime) {
+    DateTime? date = DateTime.tryParse(dateTime ?? "");
+    if (date != null) {
+      String weekDay = DateFormatUtils.getWeekdayName(date.weekday);
+      String ymdw = "${formatDate(date, DateFormatUtils.ymd)},$weekDay\n";
+
+      return "$ymdw${formatDate(date, DateFormatUtils.hn)}";
+    }
+    return '';
+  }
 
   // 【日期方法一】： 输入对象月，可以得到对象月的末日
   String getCurrentMonthLastDay(String date) {
@@ -45,6 +73,4 @@ class DateFormatUtils {
 // 用来计算距离终了月的前13个月的月份
 //   DateTime tempFromDate = DateTime(fromDate.year, fromDate.month, toDate.day - 1);
 //   DateTime tempToDate = DateTime(toDate.year - 1, toDate.month - 1, toDate.day);
-
-
 }

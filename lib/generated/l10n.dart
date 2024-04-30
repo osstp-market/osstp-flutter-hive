@@ -70,10 +70,10 @@ class S {
     );
   }
 
-  /// `favor`
+  /// `Favor`
   String get tabbar_favor {
     return Intl.message(
-      'favor',
+      'Favor',
       name: 'tabbar_favor',
       desc: '',
       args: [],

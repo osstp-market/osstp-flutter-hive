@@ -4,9 +4,10 @@ import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 import '../../generated/l10n.dart';
 
 class RefreshWidget extends StatefulWidget {
-  const RefreshWidget({Key? key, required this.refreshController, required this.child, this.onRefresh, this.onLoading})
+  const RefreshWidget({Key? key, required this.refreshController, required this.child, this.onRefresh, this.onLoading, this.enablePullUp = false})
       : super(key: key);
   final RefreshController refreshController;
+  final bool enablePullUp;
   final VoidCallback? onRefresh;
   final VoidCallback? onLoading;
   final Widget child;
@@ -49,7 +50,7 @@ class _RefreshWidgetState extends State<RefreshWidget> {
   Widget build(BuildContext context) {
     return SmartRefresher(
       enablePullDown: true,
-      enablePullUp: true,
+      enablePullUp: widget.enablePullUp,
       header: const WaterDropHeader(),
       footer: CustomFooter(
         builder: (BuildContext context, LoadStatus? mode) {
@@ -74,7 +75,7 @@ class _RefreshWidgetState extends State<RefreshWidget> {
       controller: _refreshController,
       onRefresh: _onRefresh,
       onLoading: _onLoading,
-      enableTwoLevel: true,
+      enableTwoLevel: false,
       child: widget.child,
     );
   }

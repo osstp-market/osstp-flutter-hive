@@ -16,9 +16,8 @@ class ElevatedButtonWidget extends StatelessWidget {
     this.arrowImageName,
     this.arrowImageColor,
     this.padding,
-    this.margin,
     this.elevation,
-    this.borderRadius = 10,
+    this.borderRadius = 2,
     this.debounceDuration,
   }) : super(key: key);
   final Text? titleText;
@@ -32,7 +31,6 @@ class ElevatedButtonWidget extends StatelessWidget {
   final Color? borderColor;
   final VoidCallback? onPressed;
   final EdgeInsetsGeometry? padding;
-  final EdgeInsetsGeometry? margin;
   final double? elevation;
   final double borderRadius;
   final int? debounceDuration;
@@ -41,42 +39,39 @@ class ElevatedButtonWidget extends StatelessWidget {
   bool debounce = false;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: margin,
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          elevation: elevation,
-          backgroundColor: backgroundColor,
-          padding: padding,
-          disabledForegroundColor: disabledForegroundColor,
-          disabledBackgroundColor: disabledBackgroundColor,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(borderRadius),
-            side: BorderSide(color: borderColor ?? Colors.transparent),
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        elevation: elevation,
+        backgroundColor: backgroundColor,
+        padding: padding,
+        disabledForegroundColor: disabledForegroundColor,
+        disabledBackgroundColor: disabledBackgroundColor,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(borderRadius),
+          side: BorderSide(color: borderColor ?? Colors.transparent),
+        ),
+      ),
+      onPressed: () {
+        if (debounce == false && onPressed != null) {
+          debounce = true;
+          onPressed!();
+          Future.delayed(Duration(milliseconds: debounceDuration ?? 777), () {
+            debounce = false;
+          });
+        }
+      },
+      child: Stack(
+        alignment: Alignment.center,
+        children: <Widget>[
+          Offstage(
+            offstage: titleText == null ? true : false,
+            child: titleText,
           ),
-        ),
-        onPressed: () {
-          if (debounce == false && onPressed != null) {
-            debounce = true;
-            onPressed!();
-            Future.delayed(Duration(milliseconds: debounceDuration ?? 777), () {
-              debounce = false;
-            });
-          }
-        },
-        child: Stack(
-          alignment: Alignment.center,
-          children: <Widget>[
-            Offstage(
-              offstage: titleText == null ? true : false,
-              child: titleText,
-            ),
-            Offstage(
-              offstage: child == null ? true : false,
-              child: child,
-            )
-          ],
-        ),
+          Offstage(
+            offstage: child == null ? true : false,
+            child: child,
+          )
+        ],
       ),
     );
   }
